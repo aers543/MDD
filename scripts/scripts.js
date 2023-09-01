@@ -4,21 +4,24 @@
 // openMenu is for redirecting to different pages
 // scripts.js
 
-// Function to open the selected tab
+// scripts.js
+
 function openMenu(event, menuName) {
+    var i, tabcontent, tablinks;
+    
     // Get all elements with class "sensor" and hide them
-    var tabcontent = document.getElementsByClassName("sensor");
-    for (var i = 0; i < tabcontent.length; i++) {
+    tabcontent = document.getElementsByClassName("sensor");
+    for (i = 0; i < tabcontent.length; i++) {
       tabcontent[i].style.display = "none";
     }
-  
+    
     // Get all elements with class "tablink" and remove the "active" class
-    var tablinks = document.getElementsByClassName("tablink");
-    for (var i = 0; i < tablinks.length; i++) {
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
       tablinks[i].classList.remove("active");
     }
-  
-    // Show the selected tab and add the "active" class to the clicked tablink
+    
+    // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(menuName).style.display = "block";
     event.currentTarget.classList.add("active");
   }
@@ -27,7 +30,40 @@ function openMenu(event, menuName) {
   window.addEventListener("load", function() {
     document.querySelector(".tablink").click();
   });
-  
+
+
+// function to open and close menu
+function toggleMenu(event, menuName) {
+  var tabcontent = document.getElementById(menuName);
+  var computedStyle = window.getComputedStyle(tabcontent);
+
+  if (computedStyle.display === "block") {
+    tabcontent.style.display = "none";
+    event.currentTarget.classList.remove("active");
+  } else {
+    tabcontent.style.display = "block";
+    event.currentTarget.classList.add("active");
+  }
+}
+
+window.addEventListener("load", function () {
+  document.querySelector(".tablink").click();
+});
+
+// Function to load and insert HTML content into a specified container
+function loadHTMLContent(url, containerId) {
+  const container = document.getElementById(containerId);
+
+  fetch(url)
+      .then(response => response.text())
+      .then(data => {
+          container.innerHTML = data;
+      })
+      .catch(error => {
+          console.error("Error loading HTML content:", error);
+      });
+}
+
  
 // smoothScrollTo is used to integrate smooth scrolling into the website
 function smoothScrollTo(targetId) {

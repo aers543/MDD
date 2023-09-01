@@ -7,31 +7,30 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <script src="../scripts/scripts.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <script src="scripts/scripts.js"></script>
 </head>
 
-<body>
+<body class="body">
   <!-- Navigation Bar -->
-  <nav class="navbar">
-    <a href="index.html" class="navbar">HOME</a>
-    <a href="about.html" class="navbar">ABOUT US</a>
-    <a href="product.html" class="navbar">OUR PRODUCT</a>
-    <a href="tracking.html" class="navbar">TRACKING</a>
-  </nav>
+    <nav class="header">
+        <a href="index.html" class="navbar">HOME</a>
+        <a href="about.html" class="navbar">ABOUT US</a>
+        <a href="product.html" class="navbar">OUR PRODUCT</a>
+        <a href="tracking.html" class="navbar">TRACKING</a>
+    </nav>
 
   <main>
     <!-- pH Levels Section -->
     <section>
         <div class="container" id="track">
             <div style="max-width:700px">
-                <h5>pH</h5>
+                <h2>pH</h2>
                 <div class="tab-links">
-                    <a href="javascript:void(0)" onclick="openMenu(event, 'pH');" class="tablink"></a>
-                    <button type="button" name="myButton" onclick="openMenu(event, 'pH');" class="tablink">pH levels</button>
-
-                </div>
-
+                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'pH');" class="tablink"></a>
+                    <button type="button" name="myButton" onclick="toggleMenu(event, 'pH');" class="tablink">pH levels</button>
+                  </div>
+                  
                 <div id="pH" class="sensor">
                     <h5>pH levels over time</h5>
                     <p>Your pH levels are optimal</p>
@@ -45,10 +44,10 @@
     <section>
         <div class="container" id="track">
             <div style="max-width:700px">
-                <h5>H2O</h5>
+                <h2>H2O</h2>
                 <div class="tab-links">
-                    <a href="javascript:void(0)" onclick="openMenu(event, 'H2O');" class="tablink"></a>
-                    <button type="button" name="myButton" onclick="openMenu(event, 'H2O');" class="tablink">H2O levels</button>
+                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'H2O');" class="tablink"></a>
+                    <button type="button" name="myButton" onclick="toggleMenu(event, 'H2O');" class="tablink">H2O levels</button>
                 </div>
 
                 <div id="H2O" class="sensor">
@@ -64,10 +63,10 @@
     <section>
         <div class="container" id="track">
             <div style="max-width:700px">
-                <h5>O2</h5>
+                <h2>O2</h2>
                 <div class="tab-links">
-                    <a href="javascript:void(0)" onclick="openMenu(event, 'O2');" class="tablink"></a>
-                    <button type="button" name="myButton" onclick="openMenu(event, 'O2');" class="tablink">O2 levels</button>
+                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'O2');" class="tablink"></a>
+                    <button type="button" name="myButton" onclick="toggleMenu(event, 'O2');" class="tablink">O2 levels</button>
                 </div>
 
                 <div id="O2" class="sensor">
@@ -83,10 +82,10 @@
     <section>
         <div class="container" id="track">
             <div style="max-width:700px">
-                <h5>Temperature</h5>
+                <h2>Temperature</h2>
                 <div class="tab-links">
-                    <a href="javascript:void(0)" onclick="openMenu(event, 'Temperature');" class="tablink"></a>
-                    <button type="button" name="myButton" onclick="openMenu(event, 'Temperature');" class="tablink">Temperature levels</button>
+                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'Temperature');" class="tablink"></a>
+                    <button type="button" name="myButton" onclick="toggleMenu(event, 'Temperature');" class="tablink">Temperature levels</button>
                 </div>
 
                 <div id="Temperature" class="sensor">
