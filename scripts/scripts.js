@@ -3,9 +3,6 @@
 
 // openMenu is for redirecting to different pages
 // scripts.js
-
-// scripts.js
-
 function openMenu(event, menuName) {
     var i, tabcontent, tablinks;
     
@@ -97,4 +94,68 @@ function toggleNavigation() {
   menuIcon.addEventListener('click', () => {
     navMenu.classList.toggle('open');
   });
+}
+
+// function to validate input
+function validateInput(value) {
+  if (isNaN(value)) {
+      return "Please enter a valid numeric value.";
+  }
+  return null;  
+}
+
+// function for conditions for each sensor
+function updateStatus(condition, inputId, statusId) {
+  var inputElement = document.getElementById(inputId);
+  var statusElement = document.getElementById(statusId);
+
+  // Clear previous status and error messages
+  statusElement.innerHTML = "";
+  inputElement.style.border = "1px solid #ccc";
+
+  var value = parseFloat(inputElement.value);
+  var validationError = validateInput(value);
+
+  if (validationError !== null) {
+      statusElement.innerHTML = validationError;
+      inputElement.style.border = "1px solid red";
+      return;
+  }
+
+  // Perform condition-specific logic based on the provided condition
+  switch (condition) {
+      case "temperature":
+        if (value >= 30 && value <= 35) {
+          result = "GOOD";
+          statusElement.style.backgroundColor = "green";
+          } else {
+          result = "BAD";
+          statusElement.style.backgroundColor = "red";
+          }
+          break;
+
+      case "pH":
+        if (value >= 0 && value <= 14) {
+            if (value >= 5 && value <= 7) {
+                result = "GOOD";
+                statusElement.style.backgroundColor = "green";
+            } else {
+                result = "BAD";
+                statusElement.style.backgroundColor = "red";
+            }
+        } else {
+            result = "Out of acceptable pH range (0-14)";
+            statusElement.style.backgroundColor = "red";
+        }
+        break;
+      
+
+          
+      default:
+          statusElement.innerHTML = "Condition not recognized.";
+          break;
+  }
+
+  // Display the result
+  statusElement.innerHTML = result;
 }

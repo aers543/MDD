@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Doctor's View</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <script src="scripts/scripts.js"></script>
+</head>
+
+<body class="body">
+  <!-- Navigation Bar -->
+    <nav class="header">
+        <a class="navbar">
+        <img src="images/logo.png" class="logo">
+        </a>
+        <a href="patient.html" class="navbar">Patient's View</a>
+        <a href="doctor.html" class="navbar">Doctor's View</a>
+        <a href="faq.html" class="navbar">FAQ</a>
+        <a href="contact.html" class="navbar">Contact Us</a>
+    </nav>
+
+  <main>
+    <!-- pH Levels Section -->
+    <section>
+        <div class="container" id="track">
+            <div style="max-width:700px">
+                <h2>pH</h2>
+                <div class="tab-links">
+                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'pH');" class="tablink"></a>
+                    <button type="button" name="myButton" onclick="toggleMenu(event, 'pH');" class="tablink">pH levels</button>
+                  </div>
+                  
+                <div id="pH" class="sensor">
+                    <h5>pH levels over time</h5>
+                    <p>Your pH levels are optimal</p>
+                </div>
+            </div>
+            <img src="" style="">
+        </div>
+    </section>
+
+    <!-- H2O Levels Section -->
+    <section>
+        <div class="container" id="track">
+            <div style="max-width:700px">
+                <h2>H2O</h2>
+                <div class="tab-links">
+                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'H2O');" class="tablink"></a>
+                    <button type="button" name="myButton" onclick="toggleMenu(event, 'H2O');" class="tablink">H2O levels</button>
+                </div>
+
+                <div id="H2O" class="sensor">
+                    <h5>H2O levels over time</h5>
+                    <p>Your H2O levels are optimal</p>
+                </div>
+            </div>
+            <img src="" style="">
+        </div>
+    </section>
+
+    <!-- O2 Levels Section -->
+    <section>
+        <div class="container" id="track">
+            <div style="max-width:700px">
+                <h2>O2</h2>
+                <div class="tab-links">
+                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'O2');" class="tablink"></a>
+                    <button type="button" name="myButton" onclick="toggleMenu(event, 'O2');" class="tablink">O2 levels</button>
+                </div>
+
+                <div id="O2" class="sensor">
+                    <h5>O2 levels over time</h5>
+                    <p>Your O2 levels are optimal</p>
+                </div>
+            </div>
+            <img src="" style="">
+        </div>
+    </section>
+
+    <!-- Temperature Levels Section -->
+    <section>
+        <div class="container" id="track">
+            <div style="max-width:700px">
+                <h2>Temperature</h2>
+                <div class="tab-links">
+                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'Temperature');" class="tablink"></a>
+                    <button type="button" name="myButton" onclick="toggleMenu(event, 'Temperature');" class="tablink">Temperature levels</button>
+                </div>
+
+                <div id="Temperature" class="sensor">
+                    <h5>Temperature levels over time</h5>
+                    <p>Your Temperature levels are optimal</p>
+                </div>
+            </div>
+            <img src="" style="">
+        </div>
+    </section>
+  </main>
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2023 MDD Group 8. All rights reserved.</p>
+  </footer>
+</body>
+</html>
