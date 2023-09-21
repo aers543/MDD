@@ -24,16 +24,44 @@
         <a href="contact.html" class="navbar">Contact Us</a>
     </nav>
 
-  <main>
-    <section>
-        <h2>Our Product</h2>
-        <p><i>Our smart bandage is designed for...</i></p>
+  <main>  
+    <section class="faq-container">    
+      <h2 class="faq-heading">Frequently Asked Questions (FAQ)</h2>
+
+      <div class="faq-container">
+        <h3 class="faq-page" onclick="toggleAnswer('q1')">Question 1: What is a Smart Bandage?</h3>
+        <p class="faq-body" id="q1" hidden>A smart bandage is a...</p>
+      </div>
+      
+      <hr class="hr-line">
+      
+      <div class="faq-container">
+        <h3 class="faq-page" onclick="toggleAnswer('q2')">Question 2: hi</h3>
+        <p class="faq-body" id="q2" hidden>hello!!</p>
+      </div>
+      
+      <hr class="hr-line">
+      
+      <div class="faq-container">
+        <h3 class="faq-page" onclick="toggleAnswer('q3')">Question 3: Coconut?</h3>
+        <p class="faq-body" id="q3" hidden>Pineapple</p>
+      </div>
+      
+      <hr class="hr-line">
+      
+      <div class="faq-container">
+        <h3 class="faq-page" onclick="toggleAnswer('q4')">Question 4: Apple?</h3>
+        <p class="faq-body" id="q4" hidden>Orange</p>
+      </div>
+
+      <hr class="hr-line">            
     </section>
-  </main>  
+  </main>
+
 
   <!-- Footer -->
   <footer class="footer">
-    <p>&copy; 2023 MDD Group 8. All rights reserved.</p>
+    <p><b>&copy; 2023 MDD Group 8. All rights reserved.</b></p>
   </footer>
 </body>
 </html>
