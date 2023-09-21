@@ -17,14 +17,16 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  color: #fff;
-  background-color: #333; 
-  z-index: 100; /* Ensure it appears above other content */
+  color: #333;
+  background-color: #FFFDF5; 
+  /* z-index: 100; Ensure it appears above other content */
 }
+
+
 
 .body {
   /* Add padding to the top and bottom of the content to prevent it from being covered by the header and footer */
-  padding-top: 60px; /* Adjust this value based on your header's height */
+  padding-top: 80px; /* Adjust this value based on your header's height */
   padding-bottom: 60px; /* Adjust this value based on your footer's height */
 }
 
@@ -54,8 +56,16 @@ section {
   margin-bottom: 20px; /* margin for separation between sections */
 }
 
+h1 {
+  margin-left: 20px; /* indent h1 headers */
+}
+
 h2 {
-  margin-left: 20px; /* indent h2 headers */
+  margin-left: 30px; /* indent h2 headers */
+}
+
+h3 {
+  margin-left: 40px; /* indent h3 headers */
 }
 
 ul {
@@ -66,6 +76,49 @@ ul {
 li {
   margin-bottom: 5px; /* separation between list items */
 }
+
+/* For FAQ page */
+.faq-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left; 
+}
+
+.hr-line {
+  width: 60%;
+  margin: auto;
+}
+
+.faq-heading {
+  text-align: center; 
+  margin: 0 auto; 
+}
+
+.faq-page {
+  cursor: pointer;
+  width: 60%;
+  border: none;
+  outline: none;
+  transition: 0.9s;
+  margin: auto;
+  text-align: left; 
+}
+
+.faq-body.open {
+  max-height: 1000px;
+  display: block;
+}
+
+.faq-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.9s ease, display 0.9s ease;
+  margin: auto;
+  width: 50%;
+}
+
+
 
 
 /* Navigation styles */
@@ -83,6 +136,7 @@ li {
   background-color: #FFFDF5;
   color: #000000;
   padding: 10px 20px;
+  font-weight: bolder;
 }
 
 .navbar a {
@@ -151,3 +205,4 @@ button:hover {
   color: #2d63c8;
   background-color: #ffffff;
 }
+

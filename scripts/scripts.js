@@ -159,3 +159,23 @@ function updateStatus(condition, inputId, statusId) {
   // Display the result
   statusElement.innerHTML = result;
 }
+
+
+// Function to open questions on FAQ page
+function toggleAnswer(questionId) {
+  var answer = document.getElementById(questionId);
+  var allAnswers = document.querySelectorAll('.faq-container .faq-body');
+
+  allAnswers.forEach(function (el) {
+    if (el.id === questionId) {
+      el.classList.toggle('open');
+    } else {
+      el.classList.remove('open');
+    }
+  });
+}
+
+
+
+
+
