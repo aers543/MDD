@@ -24,20 +24,43 @@
         <a href="contact.html" class="navbar">Contact Us</a>
     </nav>
     <main>
-      <h1>Temperature Status</h1>
-      <input type="number" id="temperatureInput">
-      <div id="temperatureStatus"></div>
-      <button onclick="updateStatus('temperature', 'temperatureInput', 'temperatureStatus')">Check Status</button>
-      <p id="temperatureResult"></p>
+      <div class="patient-container">
+        <h1>Temperature Status</h1>
+        <input type="number" id="temperatureInput">
+        <div id="temperatureStatus"></div>
+        <div id="temperatureResultBox" class="resultBox">Enter details</div>
+        <button onclick="updateStatus('temperatureInput', 'temperatureStatus', 'temperatureResultBox', checkTemperature)">Check Status</button>
+      </div>
 
-      <h1>pH Status</h1>
-      <input type="number" id="pHInput">
-      <div id="pHStatus"></div>
-      <button onclick="updateStatus('pH', 'pHInput', 'pHStatus')">Check Status</button>
-      <p id="pHResult"></p>
+      <hr class="spacing">
 
+      <div class="patient-container">
+        <h1>pH Status</h1>
+        <input type="number" id="pHInput">
+        <div id="pHStatus"></div>
+        <div id="pHResultBox" class="resultBox">Enter details</div>
+        <button onclick="updateStatus('pHInput', 'pHStatus', 'pHResultBox', checkpH)">Check Status</button>
+      </div>
 
-      <script src="script.js"></script>
+      <hr class="spacing">
+      
+      <div class="patient-container">
+        <h1>Humidity Status</h1>
+        <input type="number" id="hInput">
+        <div id="hStatus"></div>
+        <div id="hResultBox" class="resultBox">Enter details</div>
+        <button onclick="updateStatus('hInput', 'hStatus', 'hResultBox', checkhumidity)">Check Status</button>
+      </div>
+
+      <hr class="spacing">
+      
+      <div class="patient-container">
+        <h1>Pressure Status</h1>
+        <input type="number" id="pInput">
+        <div id="pStatus"></div>
+        <div id="pResultBox" class="resultBox">Enter details</div>
+        <button onclick="updateStatus('pInput', 'pStatus', 'pResultBox', checkpressure)">Check Status</button>
+      </div>
     </main>
 
   <footer class="footer">

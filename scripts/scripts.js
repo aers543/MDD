@@ -104,62 +104,113 @@ function validateInput(value) {
   return null;  
 }
 
-// function for conditions for each sensor
-function updateStatus(condition, inputId, statusId) {
+// function to update status
+function updateStatus(inputId, statusId, resultBoxId, conditionFunction) {
   var inputElement = document.getElementById(inputId);
   var statusElement = document.getElementById(statusId);
+  var resultBoxElement = document.getElementById(resultBoxId);
 
-  // Clear previous status and error messages
+  // Clear previous status, error messages, and styles
   statusElement.innerHTML = "";
   inputElement.style.border = "1px solid #ccc";
+  resultBoxElement.innerHTML = ""; // Clear previous content
+  resultBoxElement.style.backgroundColor = ""; // Clear previous background color
 
   var value = parseFloat(inputElement.value);
   var validationError = validateInput(value);
 
   if (validationError !== null) {
-      statusElement.innerHTML = validationError;
-      inputElement.style.border = "1px solid red";
-      return;
+    statusElement.innerHTML = validationError;
+    inputElement.style.border = "1px solid red";
+    return;
   }
 
-  // Perform condition-specific logic based on the provided condition
-  switch (condition) {
-      case "temperature":
-        if (value >= 30 && value <= 35) {
-          result = "GOOD";
-          statusElement.style.backgroundColor = "green";
-          } else {
-          result = "BAD";
-          statusElement.style.backgroundColor = "red";
-          }
-          break;
+  // Perform condition-specific logic based on the provided condition function
+  var result = conditionFunction(value);
 
-      case "pH":
-        if (value >= 0 && value <= 14) {
-            if (value >= 5 && value <= 7) {
-                result = "GOOD";
-                statusElement.style.backgroundColor = "green";
-            } else {
-                result = "BAD";
-                statusElement.style.backgroundColor = "red";
-            }
-        } else {
-            result = "Out of acceptable pH range (0-14)";
-            statusElement.style.backgroundColor = "red";
-        }
-        break;
-      
+  // Display the result in the resultBox
+  resultBoxElement.innerHTML = result.text;
 
-          
-      default:
-          statusElement.innerHTML = "Condition not recognized.";
-          break;
+  // Update statusElement styles based on status
+  if (result.text === "GOOD") {
+    resultBoxElement.style.backgroundColor = "lightgreen"; // Set background color to green for "GOOD"
+  } else if (result.text === "BAD") {
+    resultBoxElement.style.backgroundColor = "mistyrose"; // Set background color to red for "BAD"
+  } else {
+    // Handle other status conditions and background colors here
+    // You can add more conditions as needed
   }
-
-  // Display the result
-  statusElement.innerHTML = result;
 }
 
+// function for temperature
+function checkTemperature(value) {
+  if (value >= 30 && value <= 35) {
+    return {
+      text: "GOOD",
+    };
+  } else {
+    return {
+      text: "BAD",
+    };
+  }
+}
+
+// function for pH
+function checkpH(value) {
+  if (value >= 0 && value <= 14) {
+    if (value >= 5 && value <= 7) {
+      return {
+        text: "GOOD",
+      };
+    } else {
+      return {
+        text: "BAD",
+      };
+    }
+  } else {
+    return {
+      text: "Out of acceptable pH range (0-14)",
+    };
+  }
+}
+
+// function for humidity
+function checkhumidity(value) {
+  if (value >= 0 && value <= 14) {
+    if (value >= 5 && value <= 7) {
+      return {
+        text: "GOOD",
+      };
+    } else {
+      return {
+        text: "BAD",
+      };
+    }
+  } else {
+    return {
+      text: "Out of acceptable pH range (0-14)",
+    };
+  }
+}
+
+// function for pressure
+function checkpressure(value) {
+  if (value >= 0 && value <= 14) {
+    if (value >= 5 && value <= 7) {
+      return {
+        text: "GOOD",
+      };
+    } else {
+      return {
+        text: "BAD",
+      };
+    }
+  } else {
+    return {
+      text: "Out of acceptable pH range (0-14)",
+    };
+  }
+}
 
 // Function to open questions on FAQ page
 function toggleAnswer(questionId) {
@@ -174,8 +225,5 @@ function toggleAnswer(questionId) {
     }
   });
 }
-
-
-
 
 
