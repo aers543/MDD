@@ -21,26 +21,6 @@
   /* z-index: 100; Ensure it appears above other content */
 }
 
-.patient-container {
-  width: 50%; 
-  margin: 1% auto;
-  padding: 1%;
-  border: 1px solid #000000;
-  text-align: center; 
-}
-
-.resultBox {
-  border: 1px solid #000000;
-  margin: 1%;
-  padding: 1%;
-}
-
-
-/* #resultBox {
-  border: 1px solid #000000;
-  text-align: center;
-} */
-
 .body {
   padding-top: 80px; 
   padding-bottom: 60px;
@@ -73,6 +53,30 @@ ul {
 
 li {
   margin-bottom: 5px; /* separation between list items */
+}
+
+/* For Home Page*/
+.img {
+  width: 80%;
+  display: block;
+  text-align: center;
+  margin: auto;
+  padding: auto;
+}
+
+/* For Patient's View page */
+.patient-container {
+  width: 50%; 
+  margin: 1% auto;
+  padding: 1%;
+  border: 1px solid #000000;
+  text-align: center; 
+}
+
+.resultBox {
+  border: 1px solid #000000;
+  margin: 1%;
+  padding: 1%;
 }
 
 /* For FAQ page */
