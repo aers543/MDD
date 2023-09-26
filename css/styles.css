@@ -64,6 +64,15 @@ li {
   padding: auto;
 }
 
+.hometext {
+  width: 60%;
+  display: block;
+  justify-content: center;
+  text-align: justify;
+  margin: auto;
+  padding: auto;
+}
+
 /* For Patient's View page */
 .patient-container {
   width: 50%; 
