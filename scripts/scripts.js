@@ -201,8 +201,8 @@ function checkhumidity(value) {
 
 // function for pressure
 function checkpressure(value) {
-  if (value >= 0 && value <= 14) {
-    if (value >= 4.1 && value <= 10) {
+  if (value >= 0 && value <= 100) {
+    if (value >= 4.1 && value <= 100) {
       return {
         text: "GOOD",
       };
@@ -213,7 +213,7 @@ function checkpressure(value) {
     }
   } else {
     return {
-      text: "Out of acceptable pressure range (0-10KG/cm^2)",
+      text: "Out of acceptable pressure range (0-100KG/cm^2)",
     };
   }
 }
