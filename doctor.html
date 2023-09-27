@@ -26,63 +26,7 @@
 
   <main>
     <hr class="hr-line"> 
-    <!-- pH Levels Section -->
-    <section>
-        <div class="img" id="track">
-            <div>
-                <h2>pH</h2>
-                <div class="tab-links">
-                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'pH');" class="tablink"></a>
-                    <button type="button" name="myButton" onclick="toggleMenu(event, 'pH');" class="tablink">pH levels</button>
-                  </div>
-                  
-                <div id="pH" class="sensor">
-                    <h5>pH levels over time</h5>
-                    <p>The patient's pH levels are optimal</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <hr class="hr-line"> 
-    <!-- H2O Levels Section -->
-    <section>
-        <div class="img" id="track">
-            <div>
-                <h2>H2O</h2>
-                <div class="tab-links">
-                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'H2O');" class="tablink"></a>
-                    <button type="button" name="myButton" onclick="toggleMenu(event, 'H2O');" class="tablink">H2O levels</button>
-                </div>
-
-                <div id="H2O" class="sensor">
-                    <h5>H2O levels over time</h5>
-                    <p>The patient's H2O levels are optimal</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <hr class="hr-line"> 
-    <!-- O2 Levels Section -->
-    <section>
-        <div class="img" id="track">
-            <div>
-                <h2>O2</h2>
-                <div class="tab-links">
-                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'O2');" class="tablink"></a>
-                    <button type="button" name="myButton" onclick="toggleMenu(event, 'O2');" class="tablink">O2 levels</button>
-                </div>
-
-                <div id="O2" class="sensor">
-                    <h5>O2 levels over time</h5>
-                    <p>The patient's O2 levels are optimal</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <hr class="hr-line"> 
     <!-- Temperature Levels Section -->
     <section>
         <div class="img" id="track">
@@ -95,11 +39,74 @@
 
                 <div id="Temperature" class="sensor">
                     <h5>Temperature levels over time</h5>
+                    <img src="plots/temperature.png" class="img">
                     <p>The patient's Temperature levels are optimal</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <hr class="hr-line"> 
+
+    <!-- pH Levels Section -->
+    <section>
+        <div class="img" id="track">
+            <div>
+                <h2>pH</h2>
+                <div class="tab-links">
+                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'pH');" class="tablink"></a>
+                    <button type="button" name="myButton" onclick="toggleMenu(event, 'pH');" class="tablink">pH levels</button>
+                  </div>
+                  
+                <div id="pH" class="sensor">
+                    <h5>pH levels over time</h5>
+                    <img src="plots/ph.png" class="img">
+                    <p>The patient's pH levels are optimal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="hr-line"> 
+    <!-- Moisture Levels Section -->
+    <section>
+        <div class="img" id="track">
+            <div>
+                <h2>Moisture</h2>
+                <div class="tab-links">
+                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'H2O');" class="tablink"></a>
+                    <button type="button" name="myButton" onclick="toggleMenu(event, 'H2O');" class="tablink">H2O levels</button>
+                </div>
+
+                <div id="H2O" class="sensor">
+                    <h5>Moisture levels over time</h5>
+                    <img src="plots/moisture.png" class="img">
+                    <p>The patient's moisture levels are optimal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="hr-line"> 
+    <!-- Pressure Levels Section -->
+    <section>
+        <div class="img" id="track">
+            <div>
+                <h2>Pressure</h2>
+                <div class="tab-links">
+                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'pressure');" class="tablink"></a>
+                    <button type="button" name="myButton" onclick="toggleMenu(event, 'pressure');" class="tablink">Pressure levels</button>
+                </div>
+
+                <div id="pressure" class="sensor">
+                    <h5>Pressure levels over time</h5>
+                    <img src="plots/pressure.png" class="img">
+                    <p>The patient's pressure levels are optimal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <hr class="hr-line"> 
   </main>

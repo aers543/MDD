@@ -194,7 +194,7 @@ function checkhumidity(value) {
     }
   } else {
     return {
-      text: "Out of acceptable humidity range (0%-100%)",
+      text: "Out of acceptable moisture range (0%-100%)",
     };
   }
 }

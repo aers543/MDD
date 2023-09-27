@@ -168,8 +168,6 @@ li {
   padding: 1%;
 }
 .tablink.active {
-  margin: 1%;
-  padding: 1%;
   background-color: #ccc;
 }
 
@@ -196,7 +194,7 @@ li {
 
 .sensor {
   display: none;
-  background-color: #4bf45c;
+  background-color: #71f899;
   color: #000000;
   padding: 10px 20px;
   border: none;
