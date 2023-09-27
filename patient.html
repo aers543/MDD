@@ -24,11 +24,13 @@
         <a href="contact.html" class="navbar">Contact Us</a>
     </nav>
     <main>
+      <hr class="spacing">
+
       <div class="patient-container">
         <h1>Temperature Status</h1>
         <input type="number" id="temperatureInput">
         <div id="temperatureStatus"></div>
-        <div id="temperatureResultBox" class="resultBox">Enter details</div>
+        <div id="temperatureResultBox" class="resultBox">Enter details above</div>
         <button onclick="updateStatus('temperatureInput', 'temperatureStatus', 'temperatureResultBox', checkTemperature)">Check Status</button>
       </div>
 
@@ -38,7 +40,7 @@
         <h1>pH Status</h1>
         <input type="number" id="pHInput">
         <div id="pHStatus"></div>
-        <div id="pHResultBox" class="resultBox">Enter details</div>
+        <div id="pHResultBox" class="resultBox">Enter details above</div>
         <button onclick="updateStatus('pHInput', 'pHStatus', 'pHResultBox', checkpH)">Check Status</button>
       </div>
 
@@ -48,7 +50,7 @@
         <h1>Humidity Status</h1>
         <input type="number" id="hInput">
         <div id="hStatus"></div>
-        <div id="hResultBox" class="resultBox">Enter details</div>
+        <div id="hResultBox" class="resultBox">Enter details above</div>
         <button onclick="updateStatus('hInput', 'hStatus', 'hResultBox', checkhumidity)">Check Status</button>
       </div>
 
@@ -58,9 +60,11 @@
         <h1>Pressure Status</h1>
         <input type="number" id="pInput">
         <div id="pStatus"></div>
-        <div id="pResultBox" class="resultBox">Enter details</div>
+        <div id="pResultBox" class="resultBox">Enter details above</div>
         <button onclick="updateStatus('pInput', 'pStatus', 'pResultBox', checkpressure)">Check Status</button>
       </div>
+
+      <hr class="spacing">
     </main>
 
   <footer class="footer">

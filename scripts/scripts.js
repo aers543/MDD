@@ -144,13 +144,19 @@ function updateStatus(inputId, statusId, resultBoxId, conditionFunction) {
 
 // function for temperature
 function checkTemperature(value) {
-  if (value >= 30 && value <= 35) {
-    return {
-      text: "GOOD",
-    };
+  if (value >=20 && value <=40) {
+    if (value >= 28 && value <= 32) {
+      return {
+        text: "GOOD",
+      };
+    } else {
+      return {
+        text: "BAD",
+      };
+    }
   } else {
     return {
-      text: "BAD",
+      text: "Out of acceptable temperature range (20-40)"
     };
   }
 }
@@ -176,8 +182,8 @@ function checkpH(value) {
 
 // function for humidity
 function checkhumidity(value) {
-  if (value >= 0 && value <= 14) {
-    if (value >= 5 && value <= 7) {
+  if (value >= 0 && value <= 100) {
+    if (value >= 20 && value <= 70) {
       return {
         text: "GOOD",
       };
@@ -188,7 +194,7 @@ function checkhumidity(value) {
     }
   } else {
     return {
-      text: "Out of acceptable pH range (0-14)",
+      text: "Out of acceptable humidity range (0%-100%)",
     };
   }
 }
@@ -196,7 +202,7 @@ function checkhumidity(value) {
 // function for pressure
 function checkpressure(value) {
   if (value >= 0 && value <= 14) {
-    if (value >= 5 && value <= 7) {
+    if (value >= 4.1 && value <= 10) {
       return {
         text: "GOOD",
       };
@@ -207,7 +213,7 @@ function checkpressure(value) {
     }
   } else {
     return {
-      text: "Out of acceptable pH range (0-14)",
+      text: "Out of acceptable pressure range (0-10KG/cm^2)",
     };
   }
 }

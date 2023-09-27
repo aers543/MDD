@@ -163,7 +163,13 @@ li {
 }
 
 /* Active tab styles */
+.tab-links {
+  margin: 1%;
+  padding: 1%;
+}
 .tablink.active {
+  margin: 1%;
+  padding: 1%;
   background-color: #ccc;
 }
 
