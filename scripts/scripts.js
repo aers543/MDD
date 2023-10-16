@@ -232,4 +232,32 @@ function toggleAnswer(questionId) {
   });
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    fetchData();
+});
 
+function fetchData() {
+    // Make a GET request to your server to fetch the data
+    fetch("/data")
+        .then((response) => response.json())
+        .then((data) => {
+            displayData(data);
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+        });
+}
+
+function displayData(data) {
+    const dataContainer = document.getElementById("data-container");
+    dataContainer.innerHTML = ""; // Clear any previous data
+
+    if (data.length === 0) {
+        dataContainer.innerHTML = "<p>No data available.</p>";
+    } else {
+        data.forEach((entry) => {
+            const entryElement = document.createElement("div");
+            entryElement.innerHTML = `<p>Timestamp: ${entry.timestamp}</p><p>Sensor Type: ${entry.sensor_type}</p><p>Value: ${entry.value}</p>`;
+            dataContainer.appendChild(entryElement);
+        });
+    }
