@@ -261,3 +261,4 @@ function displayData(data) {
             dataContainer.appendChild(entryElement);
         });
     }
+}
