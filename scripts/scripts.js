@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function fetchData() {
     // Make a GET request to your server to fetch the data
-    fetch("/data")
+    fetch("http://localhost:3000/data")
         .then((response) => response.json())
         .then((data) => {
             displayData(data);
