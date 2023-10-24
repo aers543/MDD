@@ -20,8 +20,8 @@ const int red_pressure = 5;
 
 const char* ssid = "ckinie";     // Replace with your Wi-Fi network name
 const char* password = "wifiisdown"; // Replace with your Wi-Fi network password
-const char* serverHost = "mdd-g8.onrender.com"; // Replace with your server HOST
-const String serverPath = "/dataReceiver.php"; // Replace with the correct path on your server
+const char* serverHost = "localhost"; // Ervin replaced with server host details 
+const String serverPath = "/data"; // Ervin replaced with coorect path to details
 
 void setup() {
   Serial.begin(115200);
