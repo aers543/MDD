@@ -1,83 +1,80 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Patient's View</title>
+  <title>Home</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <script src="scripts/scripts.js"></script>
 </head>
 
 <body class="body">
-  <!-- Header, Navbar, and Footer Containers -->
-    <nav class="header">
-        <a class="navbar">
-        <img src="images/logo.png" class="logo">
-        </a>
-        <a href="index.html" class="navbar">Home</a>
-        <a href="patient.html" class="navbar">Patient's View</a>
-        <a href="doctor.html" class="navbar">Doctor's View</a>
-        <a href="faq.html" class="navbar">FAQ</a>
-        <a href="contact.html" class="navbar">Contact Us</a>
-    </nav>
-    <main>
-      <hr class="spacing">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="patient.html">Patient's View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="doctor.html">Doctor's View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="faq.html">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-      <div class="patient-container">
-        <h1>Temperature Status</h1>
-        <input type="number" id="temperatureInput">
-        <div id="temperatureStatus"></div>
-        <div id="temperatureResultBox" class="resultBox">Enter details above</div>
-        <button onclick="updateStatus('temperatureInput', 'temperatureStatus', 'temperatureResultBox', checkTemperature)">Check Status</button>
+  <main class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="patient-container">
+          <h1>Select Parameter</h1>
+          <div class="form-group">
+            <label for="parameterSelect">Parameter:</label>
+            <select id="parameterSelect" class="form-control">
+              <option value="temperature">Temperature</option>
+              <option value="pH">pH</option>
+              <option value="moisture">Moisture</option>
+              <option value="pressure">Pressure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="parameterInput">Enter Value:</label>
+            <input type="number" id="parameterInput" class="form-control">
+          </div>
+          <div id="parameterStatus" class="status-result"></div>
+          <div id="parameterResultBox" class="result-box">Enter details above</div>
+          <button onclick="updateStatus('parameterInput', 'parameterStatus', 'parameterResultBox', checkParameter)" class="btn btn-primary">Check Status</button>
+        </div>
       </div>
+    </div>
+  </main>
 
-      <hr class="spacing">
 
-      <div class="patient-container">
-        <h1>pH Status</h1>
-        <input type="number" id="pHInput">
-        <div id="pHStatus"></div>
-        <div id="pHResultBox" class="resultBox">Enter details above</div>
-        <button onclick="updateStatus('pHInput', 'pHStatus', 'pHResultBox', checkpH)">Check Status</button>
-      </div>
-
-      <hr class="spacing">
-      
-      <div class="patient-container">
-        <h1>Moisture Status</h1>
-        <input type="number" id="hInput">
-        <div id="hStatus"></div>
-        <div id="hResultBox" class="resultBox">Enter details above</div>
-        <button onclick="updateStatus('hInput', 'hStatus', 'hResultBox', checkhumidity)">Check Status</button>
-      </div>
-
-      <hr class="spacing">
-      
-      <div class="patient-container">
-        <h1>Pressure Status</h1>
-        <input type="number" id="pInput">
-        <div id="pStatus"></div>
-        <div id="pResultBox" class="resultBox">Enter details above</div>
-        <button onclick="updateStatus('pInput', 'pStatus', 'pResultBox', checkpressure)">Check Status</button>
-      </div>
-
-      <hr class="spacing">
-
-      <!-- New content from the provided index.html -->
-      <div id="smart-bandage-data">
-        <h1>Smart Bandage Data</h1>
-        <div id="data-container">
-        <!-- Data will be displayed here -->
-      </div>
-      </div>
-      
-    </main>
-
-  <footer class="footer">
+  <footer class="text-center mt-5">
     <p><b>&copy; 2023 MDD Group 8. All rights reserved.</b></p>
   </footer>
+  
+  <script src="scripts/scripts.js"></script>
 </body>
 </html>

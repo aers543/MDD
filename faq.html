@@ -4,88 +4,110 @@
   <title>FAQ</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <script src="scripts/scripts.js"></script>
 </head>
 
 <body class="body">
-  <!-- Navigation Bar -->
-    <nav class="header">
-        <a class="navbar">
-        <img src="images/logo.png" class="logo">
-        </a>
-        <a href="index.html" class="navbar">Home</a>
-        <a href="patient.html" class="navbar">Patient's View</a>
-        <a href="doctor.html" class="navbar">Doctor's View</a>
-        <a href="faq.html" class="navbar">FAQ</a>
-        <a href="contact.html" class="navbar">Contact Us</a>
-    </nav>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="patient.html">Patient's View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="doctor.html">Doctor's View</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="faq.html">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-  <main class="main">  
-    <section class="faq-container">    
-      <h2 class="faq-heading">Frequently Asked Questions (FAQ)</h2>
-
-      <div class="faq-container">
-        <h3 class="faq-page" onclick="toggleAnswer('q1')">Question 1: How do I put on the smart bandage?</h3>
-        <p class="faq-body" id="q1" hidden>Place the bandage on the wound like any other traditional bandage. For the velcro, place it on any part of the leg as to your preference. Ensure that the circuit board in the casing is connected to the smart bandage. 
-        </p>
+  <main class="main">
+    <section class="container my-5">
+      <h2 class="faq-heading text-center mb-4">Frequently Asked Questions (FAQ)</h2>
+  
+      <div>
+        <h5 class="text-sm" data-toggle="collapse" data-target="#q1">Question 1: How do I put on the smart bandage?</h5>
+        <div id="q1" class="faq-body collapse">
+          Place the bandage on the wound like any other traditional bandage. For the velcro, place it on any part of the leg as to your preference. Ensure that the circuit board in the casing is connected to the smart bandage.
+        </div>
       </div>
-      
+  
       <hr class="hr-line">
-      
-      <div class="faq-container">
-        <h3 class="faq-page" onclick="toggleAnswer('q2')">Question 2: What is being assessed to inform me that my wound is infected or not? </h3>
-        <p class="faq-body" id="q2" hidden>Temperature and humidity is being assessed by the sensors embedded in the smart bandage. These physiological conditions can help determine if the wound is infected or not.  
-        </p>
+  
+      <div>
+        <h5 class="text-sm" data-toggle="collapse" data-target="#q2">Question 2: What is being assessed to inform me that my wound is infected or not?</h5>
+        <div id="q2" class="faq-body collapse">
+          Temperature and humidity are being assessed by the sensors embedded in the smart bandage. These physiological conditions can help determine if the wound is infected or not.
+        </div>
       </div>
-      
+  
       <hr class="hr-line">
-      
-      <div class="faq-container">
-        <h3 class="faq-page" onclick="toggleAnswer('q3')">Question 3: How often should I change the smart bandage?</h3>
-        <p class="faq-body" id="q3" hidden>Average battery life span of the smart bandage is around 5 to 10 hours, after that please change to another new battery.
-        </p>
+  
+      <div>
+        <h5 class="text-sm" data-toggle="collapse" data-target="#q3">Question 3: How often should I change the smart bandage?</h5>
+        <div id="q3" class="faq-body collapse">
+          Average battery life span of the smart bandage is around 5 to 10 hours, after that please change to another new battery.
+        </div>
       </div>
-      
+  
       <hr class="hr-line">
-      
-      <div class="faq-container">
-        <h3 class="faq-page" onclick="toggleAnswer('q4')">Question 4: Are there any potential side effects while using the smart bandage?
-        </h3>
-        <p class="faq-body" id="q4" hidden>There is a layer of hydrogel on the smart bandage. People with allergic contact dermatitis should obtain doctor’s approval before the usage of smart bandages. If you feel any discomfort while wearing the smart bandage, please take it off immediately and consult your nearest doctor. 
-        </p>
+  
+      <div>
+        <h5 class="text-sm" data-toggle="collapse" data-target="#q4">Question 4: Are there any potential side effects while using the smart bandage?</h5>
+        <div id="q4" class="faq-body collapse">
+          There is a layer of hydrogel on the smart bandage. People with allergic contact dermatitis should obtain doctor’s approval before the usage of smart bandages. If you feel any discomfort while wearing the smart bandage, please take it off immediately and consult your nearest doctor.
+        </div>
       </div>
-
-      <hr class="hr-line">   
-      
-      <div class="faq-container">
-        <h3 class="faq-page" onclick="toggleAnswer('q5')">Question 5: Is there any special maintenance required for the smart bandage?
-        </h3>
-        <p class="faq-body" id="q5" hidden>Even though there is a casing covering the circuit board, we would highly recommend not to have any part of the device in contact with water to prevent any injuries.
-        </p>
-      </div>
-
+  
       <hr class="hr-line">
-      
-      <div class="faq-container">
-        <h3 class="faq-page" onclick="toggleAnswer('q6')">Question 6: The LED on the casing is red/yellow, what does that mean?
-        </h3>
-        <p class="faq-body" id="q6" hidden>A red/yellow LED in an indication that the wound temperature or wound humidity respectively is above the optimum temperature, do seek medical help to change the bandage.
-        </p>
+  
+      <div>
+        <h5 class="text-sm" data-toggle="collapse" data-target="#q5">Question 5: Is there any special maintenance required for the smart bandage?</h5>
+        <div id="q5" class="faq-body collapse">
+          Even though there is a casing covering the circuit board, we would highly recommend not to have any part of the device in contact with water to prevent any injuries.
+        </div>
       </div>
-      
+  
       <hr class="hr-line">
-
+  
+      <div>
+        <h5 class="text-sm" data-toggle="collapse" data-target="#q6">Question 6: The LED on the casing is red/yellow, what does that mean?</h5>
+        <div id="q6" class="faq-body collapse">
+          A red/yellow LED is an indication that the wound temperature or wound humidity, respectively, is above the optimum temperature. Do seek medical help to change the bandage.
+        </div>
+      </div>
+  
+      <hr class="hr-line">
     </section>
   </main>
 
 
-  <!-- Footer -->
-  <footer class="footer">
+  <footer class="text-center mt-5">
     <p><b>&copy; 2023 MDD Group 8. All rights reserved.</b></p>
   </footer>
+  
+  <script src="scripts/scripts.js"></script>
 </body>
 </html>

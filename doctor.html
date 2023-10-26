@@ -4,118 +4,139 @@
   <title>Doctor's View</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <script src="scripts/scripts.js"></script>
 </head>
 
 <body class="body">
-  <!-- Navigation Bar -->
-    <nav class="header">
-        <a class="navbar">
-        <img src="images/logo.png" class="logo">
-        </a>
-        <a href="index.html" class="navbar">Home</a>
-        <a href="patient.html" class="navbar">Patient's View</a>
-        <a href="doctor.html" class="navbar">Doctor's View</a>
-        <a href="faq.html" class="navbar">FAQ</a>
-        <a href="contact.html" class="navbar">Contact Us</a>
-    </nav>
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="patient.html">Patient's View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="doctor.html">Doctor's View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="faq.html">FAQ</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="contact.html">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-  <main>
-    <hr class="hr-line"> 
-
-    <!-- Temperature Levels Section -->
-    <section>
-        <div class="img" id="track">
-            <div>
+  <main class="main">
+    <section class="container my-5">
+        <!-- Temperature Levels Section -->
+        <div class="row">
+            <div class="col">
                 <h2>Temperature</h2>
-                <div class="tab-links">
-                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'Temperature');" class="tablink"></a>
-                    <button type="button" name="myButton" onclick="toggleMenu(event, 'Temperature');" class="tablink">Temperature levels</button>
-                </div>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" onclick="toggleMenu(event, 'Temperature');" class="nav-link">Temperature Levels</a>
+                    </li>
+                </ul>
 
                 <div id="Temperature" class="sensor">
-                    <h5>Temperature levels over time</h5>
-                    <img src="plots/temperature.png" class="img">
-                    <p>The patient's Temperature levels are optimal</p>
+                    <h5>Temperature Levels Over Time</h5>
+                    <img src="plots/temperature.png" class="img-fluid">
+                    <p>The patient's temperature levels are optimal.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <hr class="hr-line"> 
+    <hr class="hr-line">
 
     <!-- pH Levels Section -->
-    <section>
-        <div class="img" id="track">
-            <div>
+    <section class="container my-5">
+        <div class="row">
+            <div class="col">
                 <h2>pH</h2>
-                <div class="tab-links">
-                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'pH');" class="tablink"></a>
-                    <button type="button" name="myButton" onclick="toggleMenu(event, 'pH');" class="tablink">pH levels</button>
-                  </div>
-                  
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" onclick="toggleMenu(event, 'pH');" class="nav-link">pH Levels</a>
+                    </li>
+                </ul>
+
                 <div id="pH" class="sensor">
-                    <h5>pH levels over time</h5>
-                    <img src="plots/ph.png" class="img">
-                    <p>The patient's pH levels are optimal</p>
+                    <h5>pH Levels Over Time</h5>
+                    <img src="plots/ph.png" class="img-fluid">
+                    <p>The patient's pH levels are optimal.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <hr class="hr-line"> 
+    <hr class="hr-line">
+
     <!-- Moisture Levels Section -->
-    <section>
-        <div class="img" id="track">
-            <div>
+    <section class="container my-5">
+        <div class="row">
+            <div class="col">
                 <h2>Moisture</h2>
-                <div class="tab-links">
-                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'H2O');" class="tablink"></a>
-                    <button type="button" name="myButton" onclick="toggleMenu(event, 'H2O');" class="tablink">H2O levels</button>
-                </div>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" onclick="toggleMenu(event, 'H2O');" class="nav-link">H2O Levels</a>
+                    </li>
+                </ul>
 
                 <div id="H2O" class="sensor">
-                    <h5>Moisture levels over time</h5>
-                    <img src="plots/moisture.png" class="img">
-                    <p>The patient's moisture levels are optimal</p>
+                    <h5>Moisture Levels Over Time</h5>
+                    <img src="plots/moisture.png" class="img-fluid">
+                    <p>The patient's moisture levels are optimal.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <hr class="hr-line"> 
+    <hr class="hr-line">
+
     <!-- Pressure Levels Section -->
-    <section>
-        <div class="img" id="track">
-            <div>
+    <section class="container my-5">
+        <div class="row">
+            <div class="col">
                 <h2>Pressure</h2>
-                <div class="tab-links">
-                    <a href="javascript:void(0)" onclick="toggleMenu(event, 'pressure');" class="tablink"></a>
-                    <button type="button" name="myButton" onclick="toggleMenu(event, 'pressure');" class="tablink">Pressure levels</button>
-                </div>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" onclick="toggleMenu(event, 'pressure');" class="nav-link">Pressure Levels</a>
+                    </li>
+                </ul>
 
                 <div id="pressure" class="sensor">
-                    <h5>Pressure levels over time</h5>
-                    <img src="plots/pressure.png" class="img">
-                    <p>The patient's pressure levels are optimal</p>
+                    <h5>Pressure Levels Over Time</h5>
+                    <img src="plots/pressure.png" class="img-fluid">
+                    <p>The patient's pressure levels are optimal.</p>
                 </div>
             </div>
         </div>
     </section>
+    
+</main>
 
 
-    <hr class="hr-line"> 
-  </main>
-
-
-
-  <!-- Footer -->
-  <footer class="footer">
+  <footer class="text-center mt-5">
     <p><b>&copy; 2023 MDD Group 8. All rights reserved.</b></p>
   </footer>
+  
+  <script src="scripts/scripts.js"></script>
 </body>
 </html>

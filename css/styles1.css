@@ -1,0 +1,232 @@
+/* styles.css is for the colour coding of various objects in the website */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #FFFDF5;
+  display: flex; /* Arrange links horizontally */
+  justify-content: space-around; /* Adjust as needed for spacing between links */
+  align-items: center; /* Vertically center the links */
+  z-index: 100; /* Ensure it appears above other content */
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #333;
+  background-color: #FFFDF5; 
+  /* z-index: 100; Ensure it appears above other content */
+}
+
+.body {
+  padding-top: 80px; 
+  padding-bottom: 60px;
+}
+
+
+body, h1, h2, h3, p, ul, ol, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* fonts */
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 2%;
+  margin: 2%;
+}
+
+h1, h2, h3 {
+  font-family: "Montserrat", sans-serif;
+}
+
+
+ul {
+  list-style-type: circle; /* circle bullets for unordered lists */
+  margin-left: 20px; /* indent unordered lists */
+}
+
+li {
+  margin-bottom: 5px; /* separation between list items */
+}
+
+/* For Home Page*/
+.img {
+  width: 60%;
+  display: block;
+  text-align: center;
+  margin: auto;
+  padding: auto;
+}
+
+.hometext {
+  width: 60%;
+  display: block;
+  justify-content: center;
+  text-align: justify;
+  margin: auto;
+  padding: auto;
+}
+
+/* For Patient's View page */
+.patient-container {
+  width: 50%; 
+  margin: 1% auto;
+  padding: 1%;
+  border: 1px solid #000000;
+  text-align: center; 
+}
+
+.resultBox {
+  border: 1px solid #000000;
+  margin: 1%;
+  padding: 1%;
+}
+
+/* For FAQ page */
+.faq-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left; 
+  padding: 0.5%;
+}
+
+.hr-line {
+  width: 60%;
+  margin: auto;
+}
+
+.spacing {
+  height: 10%;
+}
+
+.faq-heading {
+  text-align: center; 
+  margin: 0 auto; 
+  padding: 0.5%;
+}
+
+.faq-page {
+  cursor: pointer;
+  width: 60%;
+  margin: auto;
+  text-align: left; 
+}
+
+.faq-page.hover {
+  background-color:#807E7A;
+}
+
+.faq-body.open {
+  max-height: max-content;
+  height: auto;
+  display: block;
+}
+
+.faq-body {
+  overflow: hidden;
+  transition: 0.9s;
+  margin: auto;
+  width: 50%;
+}
+
+
+
+
+/* Navigation styles */
+.logo {
+  width: 70px; 
+  height: 70px; 
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #FFFDF5;
+  color: #000000;
+  padding: 10px 20px;
+  font-weight: bolder;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Active tab styles */
+.tab-links {
+  margin: 1%;
+  padding: 1%;
+}
+.tablink.active {
+  background-color: #ccc;
+}
+
+/* About section styles */
+.about {
+  color: #000000;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+
+/* Main container styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Sensor section styles */
+.sensor-section {
+  background-color: #f7f7f7;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.sensor {
+  display: none;
+  background-color: #71f899;
+  color: #000000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+
+/* Link styles */
+a {
+  color: #0074d9;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Button styles */
+button {
+  color: #000000;
+  background-color: #ffffff;
+  font-size: 18px;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  padding: 10px 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+button:hover {
+  color: #2d63c8;
+  background-color: #ffffff;
+}
+

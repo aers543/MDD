@@ -1,63 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Contact Us</title>
+  <title>Contact</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <script src="scripts/scripts.js"></script>
 </head>
 
 <body class="body">
-  <!-- Navigation Bar -->
-    <nav class="header">
-        <a class="navbar">
-        <img src="images/logo.png" class="logo">
-        </a>
-        <a href="index.html" class="navbar">Home</a>
-        <a href="patient.html" class="navbar">Patient's View</a>
-        <a href="doctor.html" class="navbar">Doctor's View</a>
-        <a href="faq.html" class="navbar">FAQ</a>
-        <a href="contact.html" class="navbar">Contact Us</a>
-    </nav>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="patient.html">Patient's View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="doctor.html">Doctor's View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="faq.html">FAQ</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="contact.html">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-    <main>
-    <section>
-        <h2>About Us</h2>
-        <p>We are group 8!</p>
+  <main class="main">
+    <section class="container my-5">
+        <h2 class="mb-4">About Us</h2>
+        <p>We are a dedicated team of professionals working together to create innovative solutions.</p>
     </section>
 
-    <section>
-        <h2>Our Members</h2>
+    <section class="container my-5">
+        <h2 class="mb-4">Our Members</h2>
+
         <h3>Product Design Team</h3>
-        <ul>
-            <li><strong>Phebe</strong> - a</li>
-            <li><strong>Brandon</strong> - b</li>
-            <li><strong>Javan</strong> - c</li>
-            <li><strong>Yong Rui</strong> - d</li>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Phebe</strong> - Lead Product Designer</li>
+            <li class="list-group-item"><strong>Brandon</strong> - Product Designer</li>
+            <li class="list-group-item"><strong>Javan</strong> - Product Designer</li>
+            <li class="list-group-item"><strong>Yong Rui</strong> - Product Designer</li>
         </ul>
 
-        <h3>Electronics Team</h3>      
-        <ul>
-            <li><strong>Valerie</strong> - a</li>
-            <li><strong>Shikin</strong> - b</li>
-            <li><strong>Poh Chin</strong> - c</li>
-        </ul>         
-        
+        <h3>Electronics Team</h3>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Valerie</strong> - Lead Electronics Engineer</li>
+            <li class="list-group-item"><strong>Shikin</strong> - Electronics Engineer</li>
+            <li class="list-group-item"><strong>Poh Chin</strong> - Electronics Engineer</li>
+        </ul>
+
         <h3>Software Team</h3>
-        <ul>
-            <li><strong>Ervin</strong> - a</li>
-            <li><strong>Leann</strong> - b</li>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Ervin</strong> - Lead Software Developer</li>
+            <li class="list-group-item"><strong>Leann</strong> - Software Developer</li>
         </ul>
     </section>
-    </main>
+</main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p><b>&copy; 2023 MDD Group 8. All rights reserved.</b></p>
-    </footer>
+
+  <footer class="text-center mt-5">
+    <p><b>&copy; 2023 MDD Group 8. All rights reserved.</b></p>
+  </footer>
+  
+  <script src="scripts/scripts.js"></script>
 </body>
 </html>

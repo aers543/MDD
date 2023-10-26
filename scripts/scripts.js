@@ -142,6 +142,14 @@ function updateStatus(inputId, statusId, resultBoxId, conditionFunction) {
   }
 }
 
+function checkParameter(value){
+  var selected = document.getElementById("parameterSelect").value;
+  if(selected == "temperature")    return checkTemperature(value);
+  if(selected == "pH")             return checkpH(value);
+  if(selected == "humidity")       return checkhumidity(value);
+  if(selected == "pressure")       return checkpressure(value);
+}
+
 // function for temperature
 function checkTemperature(value) {
   if (value >=20 && value <=40) {
@@ -238,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function fetchData() {
     // Make a GET request to your server to fetch the data
-    fetch("http://localhost:3000/data")
+    fetch("/data")
         .then((response) => response.json())
         .then((data) => {
             displayData(data);
@@ -261,4 +269,4 @@ function displayData(data) {
             dataContainer.appendChild(entryElement);
         });
     }
-}
+  }

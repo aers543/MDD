@@ -4,6 +4,10 @@
   <title>Home</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -11,32 +15,64 @@
   <script src="scripts/scripts.js"></script>
 </head>
 
-<body class="body">
-  <!-- Header, Navbar, and Footer Containers -->
-  <nav class="header">
-    <a class="navbar">
-    <img src="images/logo.png" class="logo">
+<body style="background-color: #ffffff; color: #000000;" class="body">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo">
     </a>
-    <a href="index.html" class="navbar">Home</a>
-    <a href="patient.html" class="navbar">Patient's View</a>
-    <a href="doctor.html" class="navbar">Doctor's View</a>
-    <a href="faq.html" class="navbar">FAQ</a>
-    <a href="contact.html" class="navbar">Contact Us</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="patient.html">Patient's View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="doctor.html">Doctor's View</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="faq.html">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact Us</a>
+        </li>
+      </ul>
+    </div>
   </nav>
 
-  <!-- <header class="" id="home">
-    <div class="">
-      <span class="" style="font-size:70px">Smart Bandage</span>
+  <!-- Header -->
+  <header class="jumbotron text-center" style="background-color: #ffffff; color: #000000;"id="home">
+    <div class="container">
+      <h1 class="display-4">Smart Bandage</h1>
+      <p class="lead">Discover the future of wound care with our innovative Smart Bandages: Your Go-To Source for cutting-edge Wound Care Solutions.</p>
     </div>
-  </header> -->
+  </header>
 
-  <main>
-    <img src="images/home.jpg" alt="Smart Bandage" class="img">
-    <h2 class="hometext">Discover the future of wound care with our innovative Smart Bandages: Your Go-To Source for cutting-edge Wound Care Solutions.
-    </h2>
+  <main class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="images/home.jpg" alt="Smart Bandage" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <h2>Why Choose Smart Bandages?</h2>
+        <p>Smart Bandages offer a range of benefits, including:</p>
+        <ul>
+          <li>Advanced wound care technology.</li>
+          <li>Rapid wound healing and monitoring.</li>
+          <li>Customizable solutions for different needs.</li>
+          <li>Improved patient and doctor experience.</li>
+        </ul>
+        <p>Explore our website to learn more about how our innovative solutions can transform wound care.</p>
+      </div>
+    </div>
   </main>
 
-  <footer class="footer">
+  <footer class="text-center mt-5">
     <p><b>&copy; 2023 MDD Group 8. All rights reserved.</b></p>
   </footer>
 </body>
