@@ -273,7 +273,4 @@ function fetchData() {
     });
 }
 
-// Call fetchData when the page loads
-window.addEventListener('load', function () {
-  fetchData();
-});
+
