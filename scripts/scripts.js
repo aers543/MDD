@@ -243,7 +243,7 @@ function toggleAnswer(questionId) {
 document.addEventListener('DOMContentLoaded', function () {
     // Function to fetch and display data
 function fetchData() {
-  fetch('/data') // Replace with the appropriate API endpoint
+  fetch('http://localhost:3000/data') // Replace with the appropriate API endpoint
     .then(response => response.json())
     .then(data => {
       const temperatureElement = document.getElementById('temperature');
