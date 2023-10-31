@@ -277,4 +277,3 @@ function fetchData() {
 window.addEventListener('load', function () {
   fetchData();
 });
-
