@@ -242,28 +242,39 @@ function toggleAnswer(questionId) {
 
 document.addEventListener('DOMContentLoaded', function () {
     // Function to fetch and display data
-    function fetchData() {
-        fetch('/data') // Replace with the appropriate API endpoint
-            .then(response => response.json())
-            .then(data => {
-                // Get the data-display element
-                const dataDisplay = document.getElementById('data-display');
+function fetchData() {
+  fetch('/data') // Replace with the appropriate API endpoint
+    .then(response => response.json())
+    .then(data => {
+      const temperatureElement = document.getElementById('temperature');
+      const pressureElement = document.getElementById('pressure');
+      const infectionStatusElement = document.getElementById('infection-status-text');
 
-                // Clear any existing data
-                dataDisplay.innerHTML = '';
+      if (data.length > 0) {
+        const latestData = data[data.length - 1];
+        temperatureElement.textContent = latestData.temperature + '°C';
+        pressureElement.textContent = latestData.pressure + 'kg/cm²';
 
-                // Create and append elements to display the data
-                data.forEach(item => {
-                    const dataItem = document.createElement('div');
-                    dataItem.textContent = `Sensor Type: ${item.sensor_type}, Value: ${item.value}`;
-                    dataDisplay.appendChild(dataItem);
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    }
+        // Determine infection status based on your conditions
+        if (latestData.temperature >= 28 && latestData.temperature <= 32 && latestData.pressure <= 4.1) {
+          infectionStatusElement.textContent = 'Not Infected';
+        } else {
+          infectionStatusElement.textContent = 'Infected';
+        }
+      } else {
+        // Handle cases where there is no data
+        temperatureElement.textContent = 'N/A';
+        pressureElement.textContent = 'N/A';
+        infectionStatusElement.textContent = 'No data available';
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+}
 
-    // Call fetchData when the page loads
-    fetchData();
+// Call fetchData when the page loads
+window.addEventListener('load', function () {
+  fetchData();
 });
+
