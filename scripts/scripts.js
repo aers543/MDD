@@ -240,33 +240,30 @@ function toggleAnswer(questionId) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
+    // Function to fetch and display data
+    function fetchData() {
+        fetch('/data') // Replace with the appropriate API endpoint
+            .then(response => response.json())
+            .then(data => {
+                // Get the data-display element
+                const dataDisplay = document.getElementById('data-display');
+
+                // Clear any existing data
+                dataDisplay.innerHTML = '';
+
+                // Create and append elements to display the data
+                data.forEach(item => {
+                    const dataItem = document.createElement('div');
+                    dataItem.textContent = `Sensor Type: ${item.sensor_type}, Value: ${item.value}`;
+                    dataDisplay.appendChild(dataItem);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
+
+    // Call fetchData when the page loads
     fetchData();
 });
-
-function fetchData() {
-    // Make a GET request to your server to fetch the data
-    fetch("/data")
-        .then((response) => response.json())
-        .then((data) => {
-            displayData(data);
-        })
-        .catch((error) => {
-            console.error("Error fetching data:", error);
-        });
-}
-
-function displayData(data) {
-    const dataContainer = document.getElementById("data-container");
-    dataContainer.innerHTML = ""; // Clear any previous data
-
-    if (data.length === 0) {
-        dataContainer.innerHTML = "<p>No data available.</p>";
-    } else {
-        data.forEach((entry) => {
-            const entryElement = document.createElement("div");
-            entryElement.innerHTML = `<p>Timestamp: ${entry.timestamp}</p><p>Sensor Type: ${entry.sensor_type}</p><p>Value: ${entry.value}</p>`;
-            dataContainer.appendChild(entryElement);
-        });
-    }
-  }
