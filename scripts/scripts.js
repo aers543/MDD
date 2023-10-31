@@ -278,3 +278,5 @@ window.addEventListener('load', function () {
   fetchData();
 });
 
+}
+
