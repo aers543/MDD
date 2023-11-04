@@ -257,7 +257,7 @@ function fetchData() {
 }
 
 function displayData(data) {
-    const dataContainer = document.getElementById("display-data");
+    const dataContainer = document.getElementById("data-container");
     dataContainer.innerHTML = ""; // Clear any previous data
 
     if (data.length === 0) {
