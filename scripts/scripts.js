@@ -289,6 +289,8 @@ function updateInfectionStatus(data) {
     const pressureThreshold = 4.1;   // Set your pressure threshold
 
     if (data && data.length > 0) {
+           // Sort the data array based on timestamp (or other identifier)
+        data.sort((a, b) => b.timestamp - a.timestamp);
         const latestEntry = data[0]; // Assuming the first entry is the latest
 
         if (latestEntry.temperature > temperatureThreshold && latestEntry.pressure > pressureThreshold) {
