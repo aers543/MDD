@@ -260,22 +260,23 @@ function displayData(data) {
     const dataContainer = document.getElementById("display-data");
     dataContainer.innerHTML = ""; // Clear any previous data
 
-    if (data) {
-        const entry = data[0]; // Assuming the first entry is the latest
+    if (data.length === 0) {
+        dataContainer.innerHTML = "<p>No data available.</p>";
+    } else {
+        const latestEntry = data[data.length - 1]; // Access the last entry (latest)
         const temperatureElement = document.getElementById("temperature");
         const pressureElement = document.getElementById("pressure");
 
-        if (entry.temperature) {
-            temperatureElement.textContent = `${entry.temperature}°C`;
+        if (latestEntry.temperature) {
+            temperatureElement.textContent = `${latestEntry.temperature}°C`;
         }
 
-        if (entry.pressure) {
-            pressureElement.textContent = `${entry.pressure} kg/cm²`;
+        if (latestEntry.pressure) {
+            pressureElement.textContent = `${latestEntry.pressure} kg/cm²`;
         }
-    } else {
-        dataContainer.innerHTML = "<p>No data available.</p>";
     }
 }
+
 
 
 // Wait KIV this portion (Need to know how temperature is coming in to save it 
