@@ -270,3 +270,22 @@ function displayData(data) {
         });
     }
   }
+
+// Wait KIV this portion (Need to know how temperature is coming in to save it 
+// Function to update the Infection Status based on thresholds
+function updateInfectionStatus(data) {
+    const infectionStatusText = document.getElementById("infection-status-text");
+
+    // Define your threshold values
+    const temperatureThreshold = 40; // Set your temperature threshold
+    const pressureThreshold = 4.1;   // Set your pressure threshold
+
+    // Check temperature and pressure against thresholds
+    if (data.temperature > temperatureThreshold && data.pressure > pressureThreshold) {
+        infectionStatusText.textContent = "High Infection Risk";
+    } else if (data.temperature <= temperatureThreshold && data.pressure <= pressureThreshold) {
+        infectionStatusText.textContent = "Low Infection Risk";
+    } else {
+        infectionStatusText.textContent = "Moderate Infection Risk";
+    }
+}
