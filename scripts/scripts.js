@@ -257,19 +257,26 @@ function fetchData() {
 }
 
 function displayData(data) {
-    const dataContainer = document.getElementById("data-container");
+    const dataContainer = document.getElementById("display-data");
     dataContainer.innerHTML = ""; // Clear any previous data
 
-    if (data.length === 0) {
-        dataContainer.innerHTML = "<p>No data available.</p>";
+    if (data) {
+        const entry = data[0]; // Assuming the first entry is the latest
+        const temperatureElement = document.getElementById("temperature");
+        const pressureElement = document.getElementById("pressure");
+
+        if (entry.temperature) {
+            temperatureElement.textContent = `${entry.temperature}°C`;
+        }
+
+        if (entry.pressure) {
+            pressureElement.textContent = `${entry.pressure} kg/cm²`;
+        }
     } else {
-        data.forEach((entry) => {
-            const entryElement = document.createElement("div");
-            entryElement.innerHTML = `<p>Timestamp: ${entry.timestamp}</p><p>Sensor Type: ${entry.sensor_type}</p><p>Value: ${entry.value}</p>`;
-            dataContainer.appendChild(entryElement);
-        });
+        dataContainer.innerHTML = "<p>No data available.</p>";
     }
-  }
+}
+
 
 // Wait KIV this portion (Need to know how temperature is coming in to save it 
 // Function to update the Infection Status based on thresholds
@@ -280,12 +287,17 @@ function updateInfectionStatus(data) {
     const temperatureThreshold = 40; // Set your temperature threshold
     const pressureThreshold = 4.1;   // Set your pressure threshold
 
-    // Check temperature and pressure against thresholds
-    if (data.temperature > temperatureThreshold && data.pressure > pressureThreshold) {
-        infectionStatusText.textContent = "High Infection Risk";
-    } else if (data.temperature <= temperatureThreshold && data.pressure <= pressureThreshold) {
-        infectionStatusText.textContent = "Low Infection Risk";
+    if (data && data.length > 0) {
+        const latestEntry = data[0]; // Assuming the first entry is the latest
+
+        if (latestEntry.temperature > temperatureThreshold && latestEntry.pressure > pressureThreshold) {
+            infectionStatusText.textContent = "High Infection Risk";
+        } else if (latestEntry.temperature <= temperatureThreshold && latestEntry.pressure <= pressureThreshold) {
+            infectionStatusText.textContent = "Low Infection Risk";
+        } else {
+            infectionStatusText.textContent = "Moderate Infection Risk";
+        }
     } else {
-        infectionStatusText.textContent = "Moderate Infection Risk";
+        infectionStatusText.textContent = "No data available";
     }
 }
