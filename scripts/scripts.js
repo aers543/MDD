@@ -240,41 +240,33 @@ function toggleAnswer(questionId) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Function to fetch and display data
-function fetchData() {
-  fetch('http://localhost:3000/data') // Replace with the appropriate API endpoint
-    .then(response => response.json())
-    .then(data => {
-      const temperatureElement = document.getElementById('temperature');
-      const pressureElement = document.getElementById('pressure');
-      const infectionStatusElement = document.getElementById('infection-status-text');
-
-      if (data.length > 0) {
-        const latestData = data[data.length - 1];
-        temperatureElement.textContent = latestData.temperature + '°C';
-        pressureElement.textContent = latestData.pressure + 'kg/cm²';
-
-        // Determine infection status based on your conditions
-        if (latestData.temperature >= 28 && latestData.temperature <= 32 && latestData.pressure <= 4.1) {
-          infectionStatusElement.textContent = 'Not Infected';
-        } else {
-          infectionStatusElement.textContent = 'Infected';
-        }
-      } else {
-        // Handle cases where there is no data
-        temperatureElement.textContent = 'N/A';
-        pressureElement.textContent = 'N/A';
-        infectionStatusElement.textContent = 'No data available';
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
-}
-
-window.addEventListener('load', function () {
+document.addEventListener("DOMContentLoaded", function () {
     fetchData();
 });
 
+function fetchData() {
+    // Make a GET request to your server to fetch the data
+    fetch("/data")
+        .then((response) => response.json())
+        .then((data) => {
+            displayData(data);
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+        });
+}
 
+function displayData(data) {
+    const dataContainer = document.getElementById("data-container");
+    dataContainer.innerHTML = ""; // Clear any previous data
+
+    if (data.length === 0) {
+        dataContainer.innerHTML = "<p>No data available.</p>";
+    } else {
+        data.forEach((entry) => {
+            const entryElement = document.createElement("div");
+            entryElement.innerHTML = `<p>Timestamp: ${entry.timestamp}</p><p>Sensor Type: ${entry.sensor_type}</p><p>Value: ${entry.value}</p>`;
+            dataContainer.appendChild(entryElement);
+        });
+    }
+  }

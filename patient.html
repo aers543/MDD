@@ -1,66 +1,139 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Home</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-</head>
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      #woundImageUpload {
+        border: 0;
+      }
+    </style>
+  </head>
 
-<body class="body">
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-      <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="patient.html">Patient's View</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="doctor.html">Doctor's View</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="faq.html">FAQ</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact Us</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <body class="body">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img
+          src="images/logo.png"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt="Logo"
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="patient.html">Patient's View</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="doctor.html">Doctor's View</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="faq.html">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="register.html">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Login</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-  <main class="container">
-<div id="display-data">
-  <p>Temperature: <span id="temperature">N/A</span>°C</p>
-  <p>Pressure: <span id="pressure">N/A</span> kg/cm²</p>
-</div>
-<div id="infection-status">
-  <h2>Infection Status:</h2>
-  <p id="infection-status-text">Loading...</p>
-</div>
+    <main class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="patient-container">
+            <h1>Select Parameter</h1>
+            <div class="form-group">
+              <label for="parameterSelect">Parameter:</label>
+              <select id="parameterSelect" class="form-control">
+                <option value="temperature">Temperature</option>
+                <option value="pH">pH</option>
+                <option value="moisture">Moisture</option>
+                <option value="pressure">Pressure</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="parameterInput">Enter Value:</label>
+              <input type="number" id="parameterInput" class="form-control" />
+            </div>
+            <div id="parameterStatus" class="status-result"></div>
+            <div id="parameterResultBox" class="result-box">
+              Enter details above
+            </div>
+            <button
+              onclick="updateStatus('parameterInput', 'parameterStatus', 'parameterResultBox', checkParameter)"
+              class="btn btn-primary"
+            >
+              Check Status
+            </button>
+          </div>
+        </div>
+        <div style="margin-top: 10px; margin-bottom: 10px">&nbsp</div>
+        <div class="col-md-12">
+          <div class="upload-container">
+            <div class="form-group">
+              <label for="woundImageUpload">Check Wound Condition</label>
+              <input type="file" id="woundImageUpload" class="form-control" />
+            </div>
+            <button class="btn btn-primary">Analyze</button>
+          </div>
+        </div>
+      </div>
 
-  </main>
+=
+        <div id="display-data">
+          <p>Temperature: <span id="temperature">N/A</span>°C</p>
+          <p>Pressure: <span id="pressure">N/A</span> kg/cm²</p>
+        </div>
+        <div id="infection-status">
+          <h2>Infection Status:</h2>
+          <p id="infection-status-text">Loading...</p>
+        </div>
 
+    </main>
 
-  <footer class="text-center mt-5">
-    <p><b>&copy; 2023 MDD Group 8. All rights reserved.</b></p>
-  </footer>
-  
-  <script src="scripts/scripts.js"></script>
-</body>
+    <footer class="text-center mt-5">
+      <p><b>&copy; 2023 MDD Group 8. All rights reserved.</b></p>
+    </footer>
+
+    <script src="scripts/scripts.js"></script>
+  </body>
 </html>

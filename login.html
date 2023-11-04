@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Contact</title>
+    <title>Register</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -11,16 +11,29 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+    <script>
+      function login() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        if (email === "doctor@email.com" && password === "12345") {
+          alert("Login successful!");
+          window.location.href = "doctor.html";
+        } else if (email === "patient@email.com" && password === "12345") {
+          alert("Login successful!");
+          window.location.href = "patient.html";
+        } else {
+          alert("Error: Incorrect email or password.");
+        }
+
+        return false;
+      }
+    </script>
   </head>
 
   <body class="body">
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
         <img
@@ -58,76 +71,45 @@
           <li class="nav-item">
             <a class="nav-link" href="faq.html">FAQ</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact Us</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="register.html">Register</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="login.html">Login</a>
           </li>
         </ul>
       </div>
     </nav>
 
-    <main class="main">
-      <section class="container my-5">
-        <h2 class="mb-4">About Us</h2>
-        <p>
-          We are a dedicated team of professionals working together to create
-          innovative solutions.
-        </p>
-      </section>
-
-      <section class="container my-5">
-        <h2 class="mb-4">Our Members</h2>
-
-        <h3>Product Design Team</h3>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <strong>Phebe</strong> - Lead Product Designer
-          </li>
-          <li class="list-group-item">
-            <strong>Brandon</strong> - Product Designer
-          </li>
-          <li class="list-group-item">
-            <strong>Javan</strong> - Product Designer
-          </li>
-          <li class="list-group-item">
-            <strong>Yong Rui</strong> - Product Designer
-          </li>
-        </ul>
-
-        <h3>Electronics Team</h3>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <strong>Valerie</strong> - Lead Electronics Engineer
-          </li>
-          <li class="list-group-item">
-            <strong>Shikin</strong> - Electronics Engineer
-          </li>
-          <li class="list-group-item">
-            <strong>Poh Chin</strong> - Electronics Engineer
-          </li>
-        </ul>
-
-        <h3>Software Team</h3>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <strong>Ervin</strong> - Lead Software Developer
-          </li>
-          <li class="list-group-item">
-            <strong>Leann</strong> - Software Developer
-          </li>
-        </ul>
-      </section>
+    <main class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <h2 class="text-center mb-4">Login</h2>
+          <form onsubmit="return login();">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+        </div>
+      </div>
     </main>
 
     <footer class="text-center mt-5">
       <p><b>&copy; 2023 MDD Group 8. All rights reserved.</b></p>
     </footer>
-
-    <script src="scripts/scripts.js"></script>
   </body>
 </html>
