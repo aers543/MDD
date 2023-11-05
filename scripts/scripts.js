@@ -252,29 +252,36 @@ function fetchData() {
     fetch("http://localhost:3000/data")
         .then((response) => response.json())
         .then((data) => {
+            console.log(data); // Log the received data to the console for debugging
+
             // Extract the latest temperature and pressure data from the fetched JSON
             const temperature = data.temperature; // Replace with your actual JSON key
             const pressure = data.pressure; // Replace with your actual JSON key
 
-            // Update the latest readings
-            latestTemperature = temperature;
-            latestPressure = pressure;
+            if (typeof temperature !== 'undefined' && typeof pressure !== 'undefined') {
+                // Update the latest readings
+                latestTemperature = temperature;
+                latestPressure = pressure;
 
-            // Define your threshold values
-            const temperatureThreshold = 38.0; // Replace with your actual threshold
-            const pressureThreshold = 20.0; // Replace with your actual threshold
+                // Define your threshold values
+                const temperatureThreshold = 38.0; // Replace with your actual threshold
+                const pressureThreshold = 20.0; // Replace with your actual threshold
 
-            // Calculate infection risk level
-            const infectionRisk = calculateInfectionRisk(latestTemperature, latestPressure, temperatureThreshold, pressureThreshold);
+                // Calculate infection risk level
+                const infectionRisk = calculateInfectionRisk(latestTemperature, latestPressure, temperatureThreshold, pressureThreshold);
 
-            // Display the data and infection status
-            displayData(latestTemperature, latestPressure);
-            displayInfectionStatus(infectionRisk);
+                // Display the data and infection status
+                displayData(latestTemperature, latestPressure);
+                displayInfectionStatus(infectionRisk);
+            } else {
+                console.error("Temperature or pressure data is undefined.");
+            }
         })
         .catch((error) => {
             console.error("Error fetching data:", error);
         });
 }
+
 
 function calculateInfectionRisk(temperature, pressure, temperatureThreshold, pressureThreshold) {
     if (temperature > temperatureThreshold && pressure > pressureThreshold) {
