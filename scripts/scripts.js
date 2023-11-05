@@ -252,6 +252,9 @@ function fetchData() {
     fetch("http://localhost:3000/data")
         .then((response) => response.json())
         .then((data) => {
+            //Sorting it from the latest data to the oldest data
+            data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
             // Find the temperature and pressure values in the JSON response
             const sensorData = data.find((entry) => entry.sensor_type === "temperature" || entry.sensor_type === "pressure");
 
@@ -264,8 +267,8 @@ function fetchData() {
                 latestPressure = pressure;
 
                 // Define your threshold values
-                const temperatureThreshold = 38.0; // Replace with your actual threshold
-                const pressureThreshold = 20.0; // Replace with your actual threshold
+                const temperatureThreshold = 40; // Replace with your actual threshold
+                const pressureThreshold = 5.1; // Replace with your actual threshold
 
                 // Calculate infection risk level
                 const infectionRisk = calculateInfectionRisk(latestTemperature, latestPressure, temperatureThreshold, pressureThreshold);
