@@ -264,8 +264,8 @@ function fetchData() {
                 latestPressure = pressure;
 
                 // Define your threshold values
-                const temperatureThreshold = 38.0; // Replace with your actual threshold
-                const pressureThreshold = 20.0; // Replace with your actual threshold
+                const temperatureThreshold = 40.0; // Replace with your actual threshold
+                const pressureThreshold = 4.1; // Replace with your actual threshold
 
                 // Calculate infection risk level
                 const infectionRisk = calculateInfectionRisk(latestTemperature, latestPressure, temperatureThreshold, pressureThreshold);
@@ -273,6 +273,8 @@ function fetchData() {
                 // Display the data and infection status
                 displayData(latestTemperature, latestPressure);
                 displayInfectionStatus(infectionRisk);
+                 // Log the latestTemperature to the console
+                console.log("Latest Temperature: " + latestTemperature);
             } else {
                 console.error("Temperature or pressure data is undefined.");
             }
