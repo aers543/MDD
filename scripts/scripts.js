@@ -252,14 +252,8 @@ function fetchData() {
     fetch("http://localhost:3000/data")
         .then((response) => response.json())
         .then((data) => {
-            displayData(data);
-        })
-        .catch((error) => {
-            console.error("Error fetching data:", error);
-        });
-}
-
- const temperature = data.temperature; // Replace with your actual JSON key
+            // Extract the latest temperature and pressure data from the fetched JSON
+            const temperature = data.temperature; // Replace with your actual JSON key
             const pressure = data.pressure; // Replace with your actual JSON key
 
             // Update the latest readings
@@ -267,8 +261,8 @@ function fetchData() {
             latestPressure = pressure;
 
             // Define your threshold values
-            const temperatureThreshold = 40.0; // Replace with your actual threshold
-            const pressureThreshold = 4.1; // Replace with your actual threshold
+            const temperatureThreshold = 38.0; // Replace with your actual threshold
+            const pressureThreshold = 20.0; // Replace with your actual threshold
 
             // Calculate infection risk level
             const infectionRisk = calculateInfectionRisk(latestTemperature, latestPressure, temperatureThreshold, pressureThreshold);
@@ -300,3 +294,4 @@ function displayData(temperature, pressure) {
 function displayInfectionStatus(infectionRisk) {
     document.getElementById("infection-status-text").textContent = "Infection Status: " + infectionRisk;
 }
+
