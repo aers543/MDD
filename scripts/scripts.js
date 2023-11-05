@@ -280,6 +280,18 @@ function displayData(data) {
     }
 }
 
+// checking if it's inside DOM
+if (temperatureElement) {
+    console.log("Temperature element exists in the DOM.");
+} else {
+    console.log("Temperature element does not exist in the DOM.");
+}
+
+if (pressureElement) {
+    console.log("Pressure element exists in the DOM.");
+} else {
+    console.log("Pressure element does not exist in the DOM.");
+}
 
 // Wait KIV this portion (Need to know how temperature is coming in to save it 
 // Function to update the Infection Status based on thresholds
