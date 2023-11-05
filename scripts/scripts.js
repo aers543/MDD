@@ -305,11 +305,13 @@ function updateInfectionStatus(data) {
     const temperatureThreshold = 40; // Set your temperature threshold
     const pressureThreshold = 4.1;   // Set your pressure threshold
 
-    if (data && data.length > 0) {
-           // Sort the data array based on timestamp (or other identifier)
-        data.sort((a, b) => b.timestamp - a.timestamp);
-        const latestEntry = data[0]; // Assuming the first entry is the latest
-
+      if (data.length === 0) {
+        dataContainer.innerHTML = "<p>No data available.</p>";
+    } else {
+        const latestEntry = data[data.length - 1]; // Access the last entry (latest)
+        const temperatureElement = document.getElementById("temperature");
+        const pressureElement = document.getElementById("pressure");
+      
         if (latestEntry.temperature > temperatureThreshold && latestEntry.pressure > pressureThreshold) {
             infectionStatusText.textContent = "High Infection Risk";
         } else if (latestEntry.temperature <= temperatureThreshold && latestEntry.pressure <= pressureThreshold) {
@@ -317,7 +319,4 @@ function updateInfectionStatus(data) {
         } else {
             infectionStatusText.textContent = "Moderate Infection Risk";
         }
-    } else {
-        infectionStatusText.textContent = "No data available";
-    }
 }
