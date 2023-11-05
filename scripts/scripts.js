@@ -258,6 +258,8 @@ function fetchData() {
 
 function displayData(data) {
     const dataContainer = document.getElementById("display-data");
+    
+    console.log("Data received:", data);
 
     if (data.length === 0) {
         dataContainer.innerHTML = "<p>No data available.</p>";
@@ -265,6 +267,8 @@ function displayData(data) {
         const latestEntry = data[data.length - 1]; // Access the last entry (latest)
         const temperatureElement = document.getElementById("temperature");
         const pressureElement = document.getElementById("pressure");
+
+        console.log("Latest entry:", latestEntry);
 
         if (latestEntry.temperature) {
             temperatureElement.textContent = `${latestEntry.temperature}°C`;
@@ -275,7 +279,6 @@ function displayData(data) {
         }
     }
 }
-
 
 
 // Wait KIV this portion (Need to know how temperature is coming in to save it 
