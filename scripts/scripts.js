@@ -281,6 +281,9 @@ function displayData(data) {
 }
 
 // checking if it's inside DOM
+const temperatureElement = document.getElementById("temperature");
+const pressureElement = document.getElementById("pressure");
+
 if (temperatureElement) {
     console.log("Temperature element exists in the DOM.");
 } else {
