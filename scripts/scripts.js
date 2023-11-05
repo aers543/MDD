@@ -240,6 +240,9 @@ function toggleAnswer(questionId) {
   });
 }
 
+let latestTemperature = null;
+let latestPressure = null;
+
 document.addEventListener("DOMContentLoaded", function () {
     fetchData();
 });
@@ -256,67 +259,44 @@ function fetchData() {
         });
 }
 
-function displayData(data) {
-    const dataContainer = document.getElementById("display-data");
-    
-    console.log("Data received:", data);
+ const temperature = data.temperature; // Replace with your actual JSON key
+            const pressure = data.pressure; // Replace with your actual JSON key
 
-    if (data.length === 0) {
-        dataContainer.innerHTML = "<p>No data available.</p>";
+            // Update the latest readings
+            latestTemperature = temperature;
+            latestPressure = pressure;
+
+            // Define your threshold values
+            const temperatureThreshold = 40.0; // Replace with your actual threshold
+            const pressureThreshold = 4.1; // Replace with your actual threshold
+
+            // Calculate infection risk level
+            const infectionRisk = calculateInfectionRisk(latestTemperature, latestPressure, temperatureThreshold, pressureThreshold);
+
+            // Display the data and infection status
+            displayData(latestTemperature, latestPressure);
+            displayInfectionStatus(infectionRisk);
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+        });
+}
+
+function calculateInfectionRisk(temperature, pressure, temperatureThreshold, pressureThreshold) {
+    if (temperature > temperatureThreshold && pressure > pressureThreshold) {
+        return "High infection risk";
+    } else if (temperature > temperatureThreshold || pressure > pressureThreshold) {
+        return "Moderate infection risk";
     } else {
-        const latestEntry = data[data.length - 1]; // Access the last entry (latest)
-        const temperatureElement = document.getElementById("temperature");
-        const pressureElement = document.getElementById("pressure");
-
-        console.log("Latest entry:", latestEntry);
-
-        if (latestEntry.temperature) {
-            temperatureElement.textContent = `${latestEntry.temperature}°C`;
-        }
-
-        if (latestEntry.pressure) {
-            pressureElement.textContent = `${latestEntry.pressure} kg/cm²`;
-        }
+        return "Low infection risk";
     }
 }
 
-// checking if it's inside DOM
-const temperatureElement = document.getElementById("temperature");
-const pressureElement = document.getElementById("pressure");
-
-if (temperatureElement) {
-    console.log("Temperature element exists in the DOM.");
-} else {
-    console.log("Temperature element does not exist in the DOM.");
+function displayData(temperature, pressure) {
+    document.getElementById("temperature").textContent = temperature + "°C";
+    document.getElementById("pressure").textContent = pressure + "kg/cm²";
 }
 
-if (pressureElement) {
-    console.log("Pressure element exists in the DOM.");
-} else {
-    console.log("Pressure element does not exist in the DOM.");
-}
-
-// Wait KIV this portion (Need to know how temperature is coming in to save it 
-// Function to update the Infection Status based on thresholds
-function updateInfectionStatus(data) {
-    const infectionStatusText = document.getElementById("infection-status-text");
-
-    // Define your threshold values
-    const temperatureThreshold = 40; // Set your temperature threshold
-    const pressureThreshold = 4.1;   // Set your pressure threshold
-
-      if (data.length === 0) {
-        dataContainer.innerHTML = "<p>No data available.</p>";
-    } else {
-        const latestEntry = data[data.length - 1]; // Access the last entry (latest)
-        const temperatureElement = document.getElementById("temperature");
-        const pressureElement = document.getElementById("pressure");
-      
-        if (latestEntry.temperature > temperatureThreshold && latestEntry.pressure > pressureThreshold) {
-            infectionStatusText.textContent = "High Infection Risk";
-        } else if (latestEntry.temperature <= temperatureThreshold && latestEntry.pressure <= pressureThreshold) {
-            infectionStatusText.textContent = "Low Infection Risk";
-        } else {
-            infectionStatusText.textContent = "Moderate Infection Risk";
-        }
+function displayInfectionStatus(infectionRisk) {
+    document.getElementById("infection-status-text").textContent = "Infection Status: " + infectionRisk;
 }
