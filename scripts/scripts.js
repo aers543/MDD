@@ -290,11 +290,11 @@ function fetchData() {
 
 function calculateInfectionRisk(temperature, pressure, temperatureThreshold, pressureThreshold) {
     if (temperature > temperatureThreshold && pressure > pressureThreshold) {
-        return "High infection risk";
+        return "High risk of Infection, please see the doctor";
     } else if (temperature > temperatureThreshold || pressure > pressureThreshold) {
-        return "Moderate infection risk";
+        return "Moderate risk of developing wound";
     } else {
-        return "Low infection risk";
+        return "Wound is healing properly";
     }
 }
 
