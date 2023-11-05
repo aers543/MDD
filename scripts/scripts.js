@@ -258,7 +258,6 @@ function fetchData() {
 
 function displayData(data) {
     const dataContainer = document.getElementById("display-data");
-    dataContainer.innerHTML = ""; // Clear any previous data
 
     if (data.length === 0) {
         dataContainer.innerHTML = "<p>No data available.</p>";
