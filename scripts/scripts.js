@@ -244,17 +244,19 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchData();
 });
 
-function fetchData() {
-    // Make a GET request to your server to fetch the data
-    fetch("http://localhost:3000/data")
-        .then((response) => response.json())
-        .then((data) => {
-            displayData(data);
-        })
-        .catch((error) => {
-            console.error("Error fetching data:", error);
-        });
-}
+// just for debuggin 
+const simulatedData = [
+    {
+        temperature: 25,
+        pressure: 3.5
+    }
+];
+
+// Call the displayData function with simulated data
+displayData(simulatedData);
+
+//remove after checking 
+// add back 
 
 function displayData(data) {
     const dataContainer = document.getElementById("display-data");
