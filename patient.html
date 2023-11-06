@@ -77,35 +77,18 @@
     </nav>
 
     <main class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="patient-container">
-            <h1>Select Parameter</h1>
-            <div class="form-group">
-              <label for="parameterSelect">Parameter:</label>
-              <select id="parameterSelect" class="form-control">
-                <option value="temperature">Temperature</option>
-                <option value="pH">pH</option>
-                <option value="moisture">Moisture</option>
-                <option value="pressure">Pressure</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="parameterInput">Enter Value:</label>
-              <input type="number" id="parameterInput" class="form-control" />
-            </div>
-            <div id="parameterStatus" class="status-result"></div>
-            <div id="parameterResultBox" class="result-box">
-              Enter details above
-            </div>
-            <button
-              onclick="updateStatus('parameterInput', 'parameterStatus', 'parameterResultBox', checkParameter)"
-              class="btn btn-primary"
-            >
-              Check Status
-            </button>
-          </div>
+
+           <div id="display-data">
+          <h2>Live Data Readings:</h2>
+          <p>Temperature: <span id="temperature">N/A</span></p>
+          <p>Pressure: <span id="pressure">N/A</span></p>
         </div>
+
+        <div id="infection-status">
+          <h2>Infection Status:</h2>
+          <p id="infection-status-text">Loading...</p>
+        </div>
+
         <div style="margin-top: 10px; margin-bottom: 10px">&nbsp</div>
         <div class="col-md-12">
           <div class="upload-container">
@@ -117,17 +100,6 @@
           </div>
         </div>
       </div>
-
-
-        <div id="display-data">
-          <h2>Live Data Readings:</h2>
-          <p>Temperature: <span id="temperature">N/A</span></p>
-          <p>Pressure: <span id="pressure">N/A</span></p>
-        </div>
-        <div id="infection-status">
-          <h2>Infection Status:</h2>
-          <p id="infection-status-text">Loading...</p>
-        </div>
 
     </main>
 
