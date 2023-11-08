@@ -244,39 +244,44 @@ let latestTemperature = null;
 let latestPressure = null;
 
 document.addEventListener("DOMContentLoaded", function () {
-    fetchData();
+    fetchData(); // Fetch data when the page loads
+    setInterval(fetchData, 10000); // Fetch data every 10 seconds (10000 milliseconds)
 });
 
+let latestData = []; // Maintain an array for the latest data entries
+
 function fetchData() {
-    // Make a GET request to your server to fetch the data
     fetch("http://localhost:3000/data")
         .then((response) => response.json())
         .then((data) => {
-            //Sorting it from the latest data to the oldest data
             data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
-            // Find the temperature and pressure values in the JSON response
-            const sensorData = data.find((entry) => entry.sensor_type === "temperature" || entry.sensor_type === "pressure");
+            // Filter and keep only the latest two entries
+            latestData = data.filter((entry, index) => index < 2);
 
-            if (sensorData) {
-                const temperature = sensorData.sensor_type === "temperature" ? sensorData.value : null;
-                const pressure = sensorData.sensor_type === "pressure" ? sensorData.value : null;
+            // Display the data and infection status for the latest two entries
+            displayData(latestData);
 
-                // Update the latest readings
-                latestTemperature = temperature;
-                latestPressure = pressure;
+            // Rest of your code...
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+        });
+}
 
-                // Define your threshold values
-                const temperatureThreshold = 40; // Replace with your actual threshold
-                const pressureThreshold = 5.1; // Replace with your actual threshold
+function displayData(data) {
+    for (let i = 0; i < data.length; i++) {
+        const entry = data[i];
+        const sensorType = entry.sensor_type;
+        const value = entry.value;
 
-                // Calculate infection risk level
-                const infectionRisk = calculateInfectionRisk(latestTemperature, latestPressure, temperatureThreshold, pressureThreshold);
-
-                // Display the data and infection status
-                displayData(latestTemperature, latestPressure);
-                displayInfectionStatus(infectionRisk);
-
+        if (sensorType === "temperature") {
+            document.getElementById("temperature" + (i + 1)).textContent = value + "°C";
+        } else if (sensorType === "pressure") {
+            document.getElementById("pressure" + (i + 1)).textContent = value + "kg/cm²";
+        }
+    }
+}
                 // Log the latestTemperature to the console
                 console.log("Latest Temperature: " + latestTemperature);
             } else {
