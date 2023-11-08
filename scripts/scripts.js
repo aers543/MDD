@@ -240,7 +240,6 @@ function toggleAnswer(questionId) {
   });
 }
 
-let latestData = [];
 let latestTemperature = null;
 let latestPressure = null;
 
@@ -254,70 +253,49 @@ function fetchData() {
     fetch("http://localhost:3000/data")
         .then((response) => response.json())
         .then((data) => {
-            //Sorting it from the latest data to the oldest data
+            // Sorting it from the latest data to the oldest data
             data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
-            // Filter and keep only the latest two entries
-            latestData = data.filter((entry, index) => index < 2);
+            // Find the latest temperature and pressure values
+            const latestTemperatureEntry = data.find((entry) => entry.sensor_type === "temperature");
+            const latestPressureEntry = data.find((entry) => entry.sensor_type === "pressure");
 
-            // Display the data and infection status for the latest two entries
-            displayData(latestData);
+            const latestTemperature = latestTemperatureEntry ? latestTemperatureEntry.value : null;
+            const latestPressure = latestPressureEntry ? latestPressureEntry.value : null;
 
-            // Find the temperature and pressure values in the JSON response
-            const sensorData = data.find((entry) => entry.sensor_type === "temperature" || entry.sensor_type === "pressure");
+            // Define your threshold values
+            const temperatureThreshold = 40; // Replace with your actual threshold
+            const pressureThreshold = 5.1; // Replace with your actual threshold
 
-            if (sensorData) {
-                const temperature = sensorData.sensor_type === "temperature" ? sensorData.value : null;
-                const pressure = sensorData.sensor_type === "pressure" ? sensorData.value : null;
+            // Calculate infection risk level
+            const infectionRisk = calculateInfectionRisk(latestTemperature, latestPressure, temperatureThreshold, pressureThreshold);
 
-                // Update the latest readings
-                latestTemperature = temperature;
-                latestPressure = pressure;
+            // Display the data and infection status
+            displayData(latestTemperature, latestPressure);
+            displayInfectionStatus(infectionRisk);
 
-                // Define your threshold values
-                const temperatureThreshold = 40; // Replace with your actual threshold
-                const pressureThreshold = 4.1; // Replace with your actual threshold
-
-                // Calculate infection risk level
-                const infectionRisk = calculateInfectionRisk(latestTemperature, latestPressure, temperatureThreshold, pressureThreshold);
-
-                // Display the data and infection status
-                displayData(latestTemperature, latestPressure);
-                displayInfectionStatus(infectionRisk);
-
-                // Log the latestTemperature to the console
-                console.log("Latest Temperature: " + latestTemperature);
-            } else {
-                console.error("No temperature or pressure data found in the JSON response.");
-            }
+            // Log the latestTemperature to the console
+            console.log("Latest Temperature: " + latestTemperature);
         })
         .catch((error) => {
             console.error("Error fetching data:", error);
         });
 }
 
+
 function calculateInfectionRisk(temperature, pressure, temperatureThreshold, pressureThreshold) {
     if (temperature > temperatureThreshold && pressure > pressureThreshold) {
         return "High risk of wound development, please see the doctor";
     } else if (temperature > temperatureThreshold || pressure > pressureThreshold) {
-        return "Moderate risk of wound development, please continue to monitor";
+        return "Moderate risk of wound development";
     } else {
         return "Low risk of wound development";
     }
 }
 
-function displayData(data) {
-    for (let i = 0; i < data.length; i++) {
-        const entry = data[i];
-        const sensorType = entry.sensor_type;
-        const value = entry.value;
-
-        if (sensorType === "temperature") {
-            document.getElementById("temperature" + (i + 1)).textContent = value + "°C";
-        } else if (sensorType === "pressure") {
-            document.getElementById("pressure" + (i + 1)).textContent = value + "N/cm²";
-        }
-    }
+function displayData(temperature, pressure) {
+    document.getElementById("temperature").textContent = temperature + "°C";
+    document.getElementById("pressure").textContent = pressure + "kg/cm²";
 }
 
 function displayInfectionStatus(infectionRisk) {
