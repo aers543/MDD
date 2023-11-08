@@ -240,6 +240,7 @@ function toggleAnswer(questionId) {
   });
 }
 
+let latestData = [];
 let latestTemperature = null;
 let latestPressure = null;
 
