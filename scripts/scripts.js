@@ -299,5 +299,5 @@ function displayData(temperature, pressure) {
 }
 
 function displayInfectionStatus(infectionRisk) {
-    document.getElementById("infection-status-text").textContent = "Infection Status: " + infectionRisk;
+    document.getElementById("infection-status-text").textContent = infectionRisk;
 }
