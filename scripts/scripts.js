@@ -326,7 +326,22 @@ const pressureData = {
 };
 
 //configure date adaptor
-Chart.defaults._date = moment;
+import { format, parseISO } from 'date-fns';
+
+Chart._adapters._date.override({
+  formats: function () {
+    return {
+      datetime: 'yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'',
+    };
+  },
+  parse: function (value) {
+    return parseISO(value);
+  },
+  format: function (time, fmt) {
+    return format(time, fmt);
+  },
+});
+
 
 // Configuration options for the charts
 const chartOptions = {
