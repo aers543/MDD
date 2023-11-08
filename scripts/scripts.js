@@ -295,7 +295,7 @@ function calculateInfectionRisk(temperature, pressure, temperatureThreshold, pre
 
 function displayData(temperature, pressure) {
     document.getElementById("temperature").textContent = temperature + "°C";
-    document.getElementById("pressure").textContent = pressure + "kg/cm²";
+    document.getElementById("pressure").textContent = pressure + "N/cm²";
 }
 
 function displayInfectionStatus(infectionRisk) {
