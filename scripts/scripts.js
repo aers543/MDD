@@ -300,7 +300,7 @@ function calculateInfectionRisk(temperature, pressure, temperatureThreshold, pre
     if (temperature > temperatureThreshold && pressure > pressureThreshold) {
         return "High risk of wound development, please see the doctor";
     } else if (temperature > temperatureThreshold || pressure > pressureThreshold) {
-        return "Moderate risk of wound development";
+        return "Moderate risk of wound development, please continue to monitor";
     } else {
         return "Low risk of wound development";
     }
