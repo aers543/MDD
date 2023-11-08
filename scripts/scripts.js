@@ -245,6 +245,7 @@ let latestPressure = null;
 
 document.addEventListener("DOMContentLoaded", function () {
     fetchData();
+    setInterval(fetchData, 10000); // Fetch data every 10 seconds (10000 milliseconds)
 });
 
 function fetchData() {
@@ -255,8 +256,14 @@ function fetchData() {
             //Sorting it from the latest data to the oldest data
             data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
+            // Filter and keep only the latest two entries
+            latestData = data.filter((entry, index) => index < 2);
+
+            // Display the data and infection status for the latest two entries
+            displayData(latestData);
+
             // Find the temperature and pressure values in the JSON response
-            const sensorData = data.find((entry) => entry.sensor_type === "temperature" && entry.sensor_type === "pressure");
+            const sensorData = data.find((entry) => entry.sensor_type === "temperature" || entry.sensor_type === "pressure");
 
             if (sensorData) {
                 const temperature = sensorData.sensor_type === "temperature" ? sensorData.value : null;
@@ -298,9 +305,18 @@ function calculateInfectionRisk(temperature, pressure, temperatureThreshold, pre
     }
 }
 
-function displayData(temperature, pressure) {
-    document.getElementById("temperature").textContent = temperature + "°C";
-    document.getElementById("pressure").textContent = pressure + "kg/cm²";
+function displayData(data) {
+    for (let i = 0; i < data.length; i++) {
+        const entry = data[i];
+        const sensorType = entry.sensor_type;
+        const value = entry.value;
+
+        if (sensorType === "temperature") {
+            document.getElementById("temperature" + (i + 1)).textContent = value + "°C";
+        } else if (sensorType === "pressure") {
+            document.getElementById("pressure" + (i + 1)).textContent = value + "N/cm²";
+        }
+    }
 }
 
 function displayInfectionStatus(infectionRisk) {
