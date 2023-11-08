@@ -301,3 +301,118 @@ function displayData(temperature, pressure) {
 function displayInfectionStatus(infectionRisk) {
     document.getElementById("infection-status-text").textContent = infectionRisk;
 }
+
+// Variables to store the data for the graphs
+const temperatureData = {
+    labels: [], // Array to store timestamps
+    datasets: [{
+        label: "Temperature (°C)",
+        data: [], // Array to store temperature values
+        borderColor: "rgba(255, 99, 132, 1)",
+        borderWidth: 2,
+        fill: false
+    }]
+};
+
+const pressureData = {
+    labels: [], // Array to store timestamps
+    datasets: [{
+        label: "Pressure (N/cm²)",
+        data: [], // Array to store pressure values
+        borderColor: "rgba(54, 162, 235, 1)",
+        borderWidth: 2,
+        fill: false
+    }]
+};
+
+// Configuration options for the charts
+const chartOptions = {
+    scales: {
+        x: {
+            type: 'time',
+            time: {
+                parser: 'YYYY-MM-DDTHH:mm:ss.SSSZ',
+                unit: 'minute',
+                stepSize: 1,
+                displayFormats: {
+                    minute: 'HH:mm:ss'
+                }
+            },
+            title: {
+                display: true,
+                text: 'Time'
+            }
+        },
+        y: {
+            beginAtZero: true,
+            title: {
+                display: true,
+                text: 'Value'
+            }
+        }
+    },
+};
+
+// Function to update the graphs with the latest data
+function updateGraphs() {
+    const ctxTemperature = document.getElementById('temperatureChart').getContext('2d');
+    const ctxPressure = document.getElementById('pressureChart').getContext('2d');
+
+    // Create temperature chart
+    const temperatureChart = new Chart(ctxTemperature, {
+        type: 'line',
+        data: temperatureData,
+        options: chartOptions
+    });
+
+    // Create pressure chart
+    const pressureChart = new Chart(ctxPressure, {
+        type: 'line',
+        data: pressureData,
+        options: chartOptions
+    });
+}
+
+// Function to fetch and update data
+function fetchDataAndRefreshGraphs() {
+    // Make a GET request to your server to fetch the data
+    fetch("http://localhost:3000/data")
+        .then((response) => response.json())
+        .then((data) => {
+            // Sorting it from the latest data to the oldest data
+            data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+            // Keep only the latest 500 entries
+            data = data.slice(0, 500);
+
+            // Clear the old data
+            temperatureData.labels = [];
+            temperatureData.datasets[0].data = [];
+            pressureData.labels = [];
+            pressureData.datasets[0].data = [];
+
+            // Update the graph data with the latest data
+            data.forEach((entry) => {
+                if (entry.sensor_type === "temperature") {
+                    temperatureData.labels.push(entry.timestamp);
+                    temperatureData.datasets[0].data.push(entry.value);
+                } else if (entry.sensor_type === "pressure") {
+                    pressureData.labels.push(entry.timestamp);
+                    pressureData.datasets[0].data.push(entry.value);
+                }
+            });
+
+            // Refresh the graphs
+            updateGraphs();
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+        });
+}
+
+// Initially, fetch data and refresh graphs
+fetchDataAndRefreshGraphs();
+
+// Set a refresh interval to update the graphs periodically
+setInterval(fetchDataAndRefreshGraphs, 60000); // Refresh every minute (adjust as needed)
+
