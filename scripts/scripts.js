@@ -325,6 +325,9 @@ const pressureData = {
     }]
 };
 
+//configure date adaptor
+Chart.defaults._date = moment;
+
 // Configuration options for the charts
 const chartOptions = {
     scales: {
