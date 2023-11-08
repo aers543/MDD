@@ -282,16 +282,6 @@ function displayData(data) {
         }
     }
 }
-                // Log the latestTemperature to the console
-                console.log("Latest Temperature: " + latestTemperature);
-            } else {
-                console.error("No temperature or pressure data found in the JSON response.");
-            }
-        })
-        .catch((error) => {
-            console.error("Error fetching data:", error);
-        });
-}
 
 function calculateInfectionRisk(temperature, pressure, temperatureThreshold, pressureThreshold) {
     if (temperature > temperatureThreshold && pressure > pressureThreshold) {
