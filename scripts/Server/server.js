@@ -1,12 +1,13 @@
 const express = require('express');
-const https = require('https');
-const fs = require('fs');
 const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+const https = require('https');
+const fs = require('fs');
 
 const app = express();
 const port = 3000; // Choose a port of your preference
+const httpsPort = 3443; // Choose a different port for HTTPS
 
 // Middleware to enable CORS
 app.use(cors());
@@ -114,24 +115,22 @@ app.get('/data', (req, res) => {
     }
   });
 });
-// Specify the paths to your SSL/TLS certificate and private key
-const privateKeyPath = '/Users/ervinchan/Documents/MDDProject/private-key.pem';
-const certificatePath = '/Users/ervinchan/Documents/MDDProject/certificate.pem';
-const caPath = '/Users/ervinchan/Documents/MDDProject/ca.pem';
 
-// Read the SSL/TLS certificate and private key
-const privateKey = fs.readFileSync(privateKeyPath, 'utf8');
-const certificate = fs.readFileSync(certificatePath, 'utf8');
-const ca = fs.readFileSync(caPath, 'utf8');
+// Start the HTTP server
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
-const credentials = { key: privateKey, cert: certificate, ca: ca };
+// Start the HTTPS server
+const credentials = {
+  key: fs.readFileSync('/Users/ervinchan/Documents/MDDProject/private-key.pem', 'utf8'),
+  cert: fs.readFileSync('/Users/ervinchan/Documents/MDDProject/certificate.pem', 'utf8'),
+};
 
-// Create an HTTPS server using the credentials
 const httpsServer = https.createServer(credentials, app);
 
-// Start the server on the specified port
-httpsServer.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+httpsServer.listen(httpsPort, () => {
+  console.log(`HTTPS Server is running on port ${httpsPort}`);
 });
 
 // Handle server shutdown
