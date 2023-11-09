@@ -246,6 +246,9 @@ let latestPressure = null;
 document.addEventListener("DOMContentLoaded", function () {
     fetchData();
     setInterval(fetchData, 10000); // Fetch data every 10 seconds (10000 milliseconds)
+
+    fetchGraphData();
+    setInterval(fetchData, 10000); // Fetch data every 10 seconds (10000 milliseconds)
 });
 
 function fetchData() {
@@ -262,10 +265,7 @@ function fetchData() {
 
             const latestTemperature = latestTemperatureEntry ? latestTemperatureEntry.value : null;
             const latestPressure = latestPressureEntry ? latestPressureEntry.value : null;
-            
-            // Defining new variables for my graph features 
-            const temperatureData = data.filter(entry => entry.sensor_type === "temperature").slice(0, 500);
-            const pressureData = data.filter(entry => entry.sensor_type === "pressure").slice(0, 500);
+        
 
             // Define your threshold values
             const temperatureThreshold = 40; // Replace with your actual threshold
@@ -277,10 +277,6 @@ function fetchData() {
             // Display the data and infection status
             displayData(latestTemperature, latestPressure);
             displayInfectionStatus(infectionRisk);
-            
-            // Plotting temperature and pressure data 
-            plotTemperatureChart(temperatureData);
-            plotPressureChart(pressureData);
 
             // Log the latestTemperature to the console
             console.log("Latest Temperature: " + latestTemperature);
@@ -295,7 +291,7 @@ function calculateInfectionRisk(temperature, pressure, temperatureThreshold, pre
     if (temperature > temperatureThreshold && pressure > pressureThreshold) {
         return "High risk of wound development, please see the doctor";
     } else if (temperature > temperatureThreshold || pressure > pressureThreshold) {
-        return "Moderate risk of wound development";
+        return "Moderate risk of wound development, please monitor closely";
     } else {
         return "Low risk of wound development";
     }
@@ -308,6 +304,30 @@ function displayData(temperature, pressure) {
 
 function displayInfectionStatus(infectionRisk) {
     document.getElementById("infection-status-text").textContent = infectionRisk;
+}
+
+function fetchGraphData() {
+    // Make a GET request to your server to fetch the data
+    fetch("http://localhost:3000/data")
+        .then((response) => response.json())
+        .then((data) => {
+            // Sorting it from the latest data to the oldest data
+            data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+            // Defining new variables for my graph features 
+            const temperatureData = data.filter(entry => entry.sensor_type === "temperature").slice(0, 500);
+            const pressureData = data.filter(entry => entry.sensor_type === "pressure").slice(0, 500);
+
+            // Plotting temperature and pressure data 
+            plotTemperatureChart(temperatureData);
+            plotPressureChart(pressureData);
+
+            // Log the latestTemperature to the console
+            console.log("Latest Temperature: " + latestTemperature);
+        })
+        .catch((error) => {
+            console.error("Error fetching graph data:", error);
+        });
 }
 
 function plotTemperatureChart(data) {
