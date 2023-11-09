@@ -289,17 +289,6 @@ function fetchData() {
         });
 }
 
-
-function calculateInfectionRisk(temperature, pressure, temperatureThreshold, pressureThreshold) {
-    if (temperature > temperatureThreshold && pressure > pressureThreshold) {
-        return "High risk of wound development, please see the doctor";
-    } else if (temperature > temperatureThreshold || pressure > pressureThreshold) {
-        return "Moderate risk of wound development, please monitor closely";
-    } else {
-        return "Low risk of wound development";
-    }
-}
-
 function displayData(temperature, pressure) {
     // Format temperature and pressure to 2 decimal places
     const formattedTemperature = temperature.toFixed(2);
@@ -310,10 +299,36 @@ function displayData(temperature, pressure) {
     document.getElementById("pressure").textContent = formattedPressure + "N/cm²";
 }
 
+function calculateInfectionRisk(temperature, pressure, temperatureThreshold, pressureThreshold) {
+    let riskText, riskClass;
+
+    if (temperature > temperatureThreshold && pressure > pressureThreshold) {
+        riskText = "High risk of wound development, please see the doctor";
+        riskClass = "high";
+    } else if (temperature > temperatureThreshold || pressure > pressureThreshold) {
+        riskText = "Moderate risk of wound development, please monitor closely";
+        riskClass = "moderate";
+    } else {
+        riskText = "Low risk of wound development";
+        riskClass = "low";
+    }
+
+    return { text: riskText, class: riskClass };
+}
 
 function displayInfectionStatus(infectionRisk) {
-    document.getElementById("infection-status-text").textContent = infectionRisk;
+    const statusElement = document.getElementById("infection-status-text");
+    statusElement.textContent = infectionRisk.text;
+
+    // Remove existing classes
+    statusElement.classList.remove("low", "moderate", "high");
+
+    // Add class based on infection risk
+    if (infectionRisk.class) {
+        statusElement.classList.add(infectionRisk.class);
+    }
 }
+
 
 function fetchGraphData() {
     // Make a GET request to your server to fetch the data
