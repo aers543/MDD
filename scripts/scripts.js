@@ -251,9 +251,12 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(fetchData, 10000); // Fetch data every 10 seconds (10000 milliseconds)
 });
 
+// http://localhost:3000/data - alternative site.
+// https://172.20.10.2:3443/data - main site. 
+
 function fetchData() {
     // Make a GET request to your server to fetch the data
-    fetch("https://172.20.10.2:3443/data")
+    fetch("http://localhost:3000/data")
         .then((response) => response.json())
         .then((data) => {
             // Sorting it from the latest data to the oldest data
@@ -308,7 +311,7 @@ function displayInfectionStatus(infectionRisk) {
 
 function fetchGraphData() {
     // Make a GET request to your server to fetch the data
-    fetch("https://172.20.10.2:3443/data")
+    fetch("http://localhost:3000/data ")
         .then((response) => response.json())
         .then((data) => {
             // Sorting it from the latest data to the oldest data
