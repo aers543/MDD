@@ -1,4 +1,6 @@
 const express = require('express');
+const https = require('https');
+const fs = require('fs');
 const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
 const nodemailer = require('nodemailer');
@@ -112,9 +114,23 @@ app.get('/data', (req, res) => {
     }
   });
 });
+// Specify the paths to your SSL/TLS certificate and private key
+const privateKeyPath = '/path/to/private-key.pem';
+const certificatePath = '/path/to/certificate.pem';
+const caPath = '/path/to/ca.pem';
 
-// Start the server
-app.listen(port, () => {
+// Read the SSL/TLS certificate and private key
+const privateKey = fs.readFileSync(privateKeyPath, 'utf8');
+const certificate = fs.readFileSync(certificatePath, 'utf8');
+const ca = fs.readFileSync(caPath, 'utf8');
+
+const credentials = { key: privateKey, cert: certificate, ca: ca };
+
+// Create an HTTPS server using the credentials
+const httpsServer = https.createServer(credentials, app);
+
+// Start the server on the specified port
+httpsServer.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
