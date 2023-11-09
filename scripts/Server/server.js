@@ -115,9 +115,9 @@ app.get('/data', (req, res) => {
   });
 });
 // Specify the paths to your SSL/TLS certificate and private key
-const privateKeyPath = '/path/to/private-key.pem';
-const certificatePath = '/path/to/certificate.pem';
-const caPath = '/path/to/ca.pem';
+const privateKeyPath = '/Users/ervinchan/Documents/MDDProject/private-key.pem';
+const certificatePath = '/Users/ervinchan/Documents/MDDProject/certificate.pem';
+const caPath = '/Users/ervinchan/Documents/MDDProject/ca.pem';
 
 // Read the SSL/TLS certificate and private key
 const privateKey = fs.readFileSync(privateKeyPath, 'utf8');
