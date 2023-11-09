@@ -271,8 +271,8 @@ function fetchData() {
         
 
             // Define your threshold values
-            const temperatureThreshold = 40; // Replace with your actual threshold
-            const pressureThreshold = 5.1; // Replace with your actual threshold
+            const temperatureThreshold = 27; // Replace with your actual threshold
+            const pressureThreshold = 4.1; // Replace with your actual threshold
 
             // Calculate infection risk level
             const infectionRisk = calculateInfectionRisk(latestTemperature, latestPressure, temperatureThreshold, pressureThreshold);
