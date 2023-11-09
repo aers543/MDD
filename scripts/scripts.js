@@ -325,9 +325,6 @@ const pressureData = {
     }]
 };
 
-//configure date adaptor
-import { format, parseISO } from 'date-fns';
-
 Chart._adapters._date.override({
   formats: function () {
     return {
