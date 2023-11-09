@@ -17,6 +17,49 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
       rel="stylesheet"
     />
+    <style>
+      
+      .image-container {
+          margin-left: 5px; /* Adjust the margin as needed for spacing */
+      }
+
+      .hoverable-image {
+          width: 20px; /* Adjust the width to your desired size */
+          height: auto;
+          position: relative;
+      }
+
+      .image-container:hover .hoverable-image::before {
+          content: attr(title);
+          position: absolute;
+          right: 100%;
+          background-color: #000000;
+          color: #fff;
+          padding: 5px;
+          border-radius: 5px;
+          display: none;
+          transition: opacity 0.3s;
+          white-space: nowrap;
+          top: 50%;
+          transform: translate(0, -50%);
+      }
+
+      .image-container:hover .hoverable-image::before {
+          display: block;
+          opacity: 1;
+      }
+
+      .inline-heading {
+          display: inline;
+          margin-right: 10px;
+      }
+
+      .inline-icon {
+          display: flex;
+          align-items: center;
+          vertical-align: middle; /* Add this line to align the text and icon */
+      }
+    </style>
   </head>
 
   <body class="body">
@@ -68,11 +111,14 @@
 
     <main class="main">
       <section class="container my-5">
-        <h2 class="faq-heading text-center mb-4">
-          Frequently Asked Questions (FAQ)
-        </h2>
-        <p class="text-center">Please click on the questions to view the answer</p>
-
+        <div class="inline-icon">
+                <h2 class="faq-heading text-center mb-4 inline-heading">  
+                  Frequently Asked Questions (FAQ)
+                </h2>
+                <div class="image-container">
+                  <img src="images/information-button.png" alt="Information Button" class="hoverable-image"
+                    title="Please click on the questions to view the answer<." />
+                </div>
         <div>
           <h5 class="text-sm" data-toggle="collapse" data-target="#q1">
             Question 1: How do I put on the smart bandage?
