@@ -301,9 +301,15 @@ function calculateInfectionRisk(temperature, pressure, temperatureThreshold, pre
 }
 
 function displayData(temperature, pressure) {
-    document.getElementById("temperature").textContent = temperature + "°C";
-    document.getElementById("pressure").textContent = pressure + "N/cm²";
+    // Format temperature and pressure to 2 decimal places
+    const formattedTemperature = temperature.toFixed(2);
+    const formattedPressure = pressure.toFixed(2);
+
+    // Display the formatted values
+    document.getElementById("temperature").textContent = formattedTemperature + "°C";
+    document.getElementById("pressure").textContent = formattedPressure + "N/cm²";
 }
+
 
 function displayInfectionStatus(infectionRisk) {
     document.getElementById("infection-status-text").textContent = infectionRisk;
