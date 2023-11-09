@@ -259,16 +259,13 @@ function fetchData() {
             // Find the latest temperature and pressure values
             const latestTemperatureEntry = data.find((entry) => entry.sensor_type === "temperature");
             const latestPressureEntry = data.find((entry) => entry.sensor_type === "pressure");
+
+            const latestTemperature = latestTemperatureEntry ? latestTemperatureEntry.value : null;
+            const latestPressure = latestPressureEntry ? latestPressureEntry.value : null;
             
             // Defining new variables for my graph features 
             const temperatureData = data.filter(entry => entry.sensor_type === "temperature").slice(0, 500);
             const pressureData = data.filter(entry => entry.sensor_type === "pressure").slice(0, 500);
-            
-            plotTemperatureChart(temperatureData);
-            plotPressureChart(pressureData);
-
-            const latestTemperature = latestTemperatureEntry ? latestTemperatureEntry.value : null;
-            const latestPressure = latestPressureEntry ? latestPressureEntry.value : null;
 
             // Define your threshold values
             const temperatureThreshold = 40; // Replace with your actual threshold
@@ -280,6 +277,10 @@ function fetchData() {
             // Display the data and infection status
             displayData(latestTemperature, latestPressure);
             displayInfectionStatus(infectionRisk);
+            
+            // Plotting temperature and pressure data 
+            plotTemperatureChart(temperatureData);
+            plotPressureChart(pressureData);
 
             // Log the latestTemperature to the console
             console.log("Latest Temperature: " + latestTemperature);
