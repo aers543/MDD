@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function fetchData() {
     // Make a GET request to your server to fetch the data
-    fetch("http://172.20.10.2:3000/data")
+    fetch("https://172.20.10.2:3000/data")
         .then((response) => response.json())
         .then((data) => {
             // Sorting it from the latest data to the oldest data
@@ -308,7 +308,7 @@ function displayInfectionStatus(infectionRisk) {
 
 function fetchGraphData() {
     // Make a GET request to your server to fetch the data
-    fetch("http://172.20.10.2:3000/data")
+    fetch("https://172.20.10.2:3000/data")
         .then((response) => response.json())
         .then((data) => {
             // Sorting it from the latest data to the oldest data
