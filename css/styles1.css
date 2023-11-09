@@ -231,3 +231,27 @@ button:hover {
   background-color: #ffffff;
 }
 
+.status-section {
+    background-color: #fff; /* Default background color */
+}
+
+.infection-status {
+    padding: 10px; /* Adjust padding as needed */
+    border-radius: 8px; /* Adjust border radius for rounded corners */
+    color: #fff; /* Text color for better contrast */
+}
+
+/* Add styles for different infection statuses */
+.infection-status.low {
+    background-color: lightgreen; /* Set background color for "Low" status */
+}
+
+.infection-status.moderate {
+    background-color: yellow; /* Set background color for "Moderate" status */
+}
+
+.infection-status.high {
+    background-color: red; /* Set background color for "High" status */
+}
+
+
