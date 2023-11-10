@@ -245,10 +245,10 @@ let latestPressure = null;
 
 document.addEventListener("DOMContentLoaded", function () {
     fetchData();
-    setInterval(fetchData, 10000); // Fetch data every 10 seconds (10000 milliseconds)
+    setInterval(fetchData, 1000); // Fetch data every 10 seconds (10000 milliseconds)
 
     fetchGraphData();
-    setInterval(fetchData, 10000); // Fetch data every 10 seconds (10000 milliseconds)
+    setInterval(fetchData, 1000); // Fetch data every 10 seconds (10000 milliseconds)
 });
 
 // http://localhost:3000/data - alternative site.
@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function fetchData() {
     // Make a GET request to your server to fetch the data
-    fetch("http://localhost:3000/data")
+    fetch("https://172.20.10.2:3443/data")
         .then((response) => response.json())
         .then((data) => {
             // Sorting it from the latest data to the oldest data
@@ -332,7 +332,7 @@ function displayInfectionStatus(infectionRisk) {
 
 function fetchGraphData() {
     // Make a GET request to your server to fetch the data
-    fetch("http://localhost:3000/data ")
+    fetch("https://172.20.10.2:3443/data")
         .then((response) => response.json())
         .then((data) => {
             // Sorting it from the latest data to the oldest data
