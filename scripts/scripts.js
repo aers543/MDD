@@ -339,8 +339,8 @@ function fetchGraphData() {
             data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
             // Defining new variables for my graph features 
-            const temperatureData = data.filter(entry => entry.sensor_type === "temperature").slice(0, 100);
-            const pressureData = data.filter(entry => entry.sensor_type === "pressure").slice(0, 100);
+            const temperatureData = data.filter(entry => entry.sensor_type === "temperature").slice(0, 500);
+            const pressureData = data.filter(entry => entry.sensor_type === "pressure").slice(0, 500);
 
             // Plotting temperature and pressure data 
             plotTemperatureChart(temperatureData);
